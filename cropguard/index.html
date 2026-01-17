@@ -13,6 +13,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
+    <!-- Leaflet CSS - MUST load before Leaflet JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="index.css">
 </head>
@@ -266,6 +271,228 @@
 
                 <!-- Page Content -->
                 <div class="page-content">
+                    <!-- Home Page -->
+                    <div ng-if="vm.currentPage === 'home'" ng-controller="HomeController as home">
+                        <!-- Home Page Content -->
+                        <div class="home-page">
+                            <!-- Welcome Section -->
+                            <div class="welcome-section">
+                                <h2>Welcome back, {{home.user.name}}!</h2>
+                                <p class="welcome-subtitle">Here's what's happening with your agricultural infrastructure</p>
+                            </div>
+
+                            <!-- Quick Stats Cards -->
+                            <div class="quick-stats-cards">
+                                <div class="quick-stat-card" ng-click="home.goToFarms()">
+                                    <div class="quick-stat-icon farms">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div class="quick-stat-content">
+                                        <div class="quick-stat-value">{{home.stats.totalFarms}}</div>
+                                        <div class="quick-stat-label">Total Farms</div>
+                                    </div>
+                                </div>
+
+                                <div class="quick-stat-card" ng-click="home.goToDevices()">
+                                    <div class="quick-stat-icon devices">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <div class="quick-stat-content">
+                                        <div class="quick-stat-value">{{home.stats.activeDevices}}/{{home.stats.totalDevices}}</div>
+                                        <div class="quick-stat-label">Active Devices</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Content Sections - Professional Dashboard Layout -->
+                            <div class="home-sections-layout">
+                                <!-- Recent Alerts Section -->
+                                <div class="home-section-card">
+                                    <div class="section-header-modern">
+                                        <div class="section-title-group">
+                                            <div class="section-icon-wrapper alert-icon-bg">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="section-title">Recent Alerts</h3>
+                                                <p class="section-subtitle">Security notifications</p>
+                                            </div>
+                                        </div>
+                                        <a ng-click="home.goToRecords()" class="view-all-link-modern">
+                                            View all
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="alerts-list-modern">
+                                        <div class="alert-item-modern" 
+                                             ng-repeat="alert in home.recentAlerts | limitTo:4"
+                                             ng-class="{'alert-critical-modern': alert.prediction === 'Anomaly', 'alert-warning-modern': alert.prediction === 'Suspicious'}"
+                                             ng-click="home.viewRecord(alert)">
+                                            <div class="alert-indicator" ng-class="{'indicator-critical': alert.prediction === 'Anomaly', 'indicator-warning': alert.prediction === 'Suspicious'}"></div>
+                                            <div class="alert-content-modern">
+                                                <div class="alert-header-modern">
+                                                    <span class="alert-title-modern">{{alert.device_name}}</span>
+                                                    <span class="alert-badge-modern" ng-class="{'badge-critical': alert.prediction === 'Anomaly', 'badge-warning': alert.prediction === 'Suspicious', 'badge-normal': alert.prediction === 'Normal'}">{{alert.prediction}}</span>
+                                                </div>
+                                                <div class="alert-meta-modern">
+                                                    <span class="alert-farm">{{alert.farm_name}}</span>
+                                                    <span class="alert-separator">•</span>
+                                                    <span class="alert-time-modern">{{alert.processed_at | date:'MMM d, h:mm a'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="empty-state-modern" ng-if="home.recentAlerts.length === 0">
+                                            <div class="empty-icon">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <p>No recent alerts</p>
+                                            <span class="empty-subtitle">All systems operating normally</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quick Actions Section -->
+                                <div class="home-section-card">
+                                    <div class="section-header-modern">
+                                        <div class="section-title-group">
+                                            <div class="section-icon-wrapper action-icon-bg">
+                                                <i class="fas fa-bolt"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="section-title">Quick Actions</h3>
+                                                <p class="section-subtitle">Navigate to sections</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="quick-actions-grid-modern">
+                                        <div class="action-card-modern" ng-click="home.goToDevices()">
+                                            <div class="action-icon-modern devices-icon">
+                                                <i class="fas fa-microchip"></i>
+                                            </div>
+                                            <div class="action-content-modern">
+                                                <span class="action-title-modern">Devices</span>
+                                                <span class="action-desc-modern">View all devices</span>
+                                            </div>
+                                            <i class="fas fa-chevron-right action-arrow"></i>
+                                        </div>
+                                        <div class="action-card-modern" ng-click="home.goToRecords()">
+                                            <div class="action-icon-modern records-icon">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </div>
+                                            <div class="action-content-modern">
+                                                <span class="action-title-modern">ML Records</span>
+                                                <span class="action-desc-modern">View detection records</span>
+                                            </div>
+                                            <i class="fas fa-chevron-right action-arrow"></i>
+                                        </div>
+                                        <div class="action-card-modern" ng-click="home.goToGeographic()">
+                                            <div class="action-icon-modern map-icon">
+                                                <i class="fas fa-map-marked-alt"></i>
+                                            </div>
+                                            <div class="action-content-modern">
+                                                <span class="action-title-modern">Threat Map</span>
+                                                <span class="action-desc-modern">Geographic view</span>
+                                            </div>
+                                            <i class="fas fa-chevron-right action-arrow"></i>
+                                        </div>
+                                        <div class="action-card-modern" ng-click="home.goToFarms()">
+                                            <div class="action-icon-modern farms-icon">
+                                                <i class="fas fa-seedling"></i>
+                                            </div>
+                                            <div class="action-content-modern">
+                                                <span class="action-title-modern">Farms</span>
+                                                <span class="action-desc-modern">Manage farms</span>
+                                            </div>
+                                            <i class="fas fa-chevron-right action-arrow"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Device Locations Section -->
+                                <div class="home-section-card">
+                                    <div class="section-header-modern">
+                                        <div class="section-title-group">
+                                            <div class="section-icon-wrapper location-icon-bg">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="section-title">Device Locations</h3>
+                                                <p class="section-subtitle">Farm distribution</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="device-locations-grid-modern">
+                                        <div class="location-card-modern" ng-repeat="location in home.deviceLocations | limitTo:4">
+                                            <div class="location-header-modern">
+                                                <div class="location-icon-modern">
+                                                    <i class="fas fa-seedling"></i>
+                                                </div>
+                                                <div class="location-status-modern">
+                                                    <span class="status-dot active"></span>
+                                                    <span class="status-text">{{location.active}} active</span>
+                                                </div>
+                                            </div>
+                                            <div class="location-content-modern">
+                                                <h4 class="location-farm-modern">{{location.farm}}</h4>
+                                                <div class="location-stats-modern">
+                                                    <span class="stat-item">
+                                                        <i class="fas fa-microchip"></i>
+                                                        {{location.total}} devices
+                                                    </span>
+                                                    <span class="stat-item">
+                                                        <i class="fas fa-map-pin"></i>
+                                                        {{location.coordinates}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="empty-state-modern" ng-if="home.deviceLocations.length === 0">
+                                            <div class="empty-icon">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                            <p>No locations</p>
+                                            <span class="empty-subtitle">No device locations available</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Recent Activity Section -->
+                                <div class="home-section-card">
+                                    <div class="section-header-modern">
+                                        <div class="section-title-group">
+                                            <div class="section-icon-wrapper activity-icon-bg">
+                                                <i class="fas fa-history"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="section-title">Recent Activity</h3>
+                                                <p class="section-subtitle">System events</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-timeline-modern">
+                                        <div class="activity-item-modern" ng-repeat="activity in home.recentActivity | limitTo:4">
+                                            <div class="activity-line"></div>
+                                            <div class="activity-icon-modern" ng-class="{'icon-anomaly': activity.type === 'anomaly', 'icon-suspicious': activity.type === 'suspicious', 'icon-normal': activity.type === 'normal'}">
+                                                <i class="fas" ng-class="activity.icon"></i>
+                                            </div>
+                                            <div class="activity-content-modern">
+                                                <p class="activity-text-modern">{{activity.text}}</p>
+                                                <span class="activity-time-modern">{{activity.time | date:'MMM d, h:mm a'}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-state-modern" ng-if="home.recentActivity.length === 0">
+                                            <div class="empty-icon">
+                                                <i class="fas fa-history"></i>
+                                            </div>
+                                            <p>No activity</p>
+                                            <span class="empty-subtitle">No recent activity to display</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Analytics Page -->
                     <div ng-if="vm.currentPage === 'analytics'" ng-controller="AnalyticsController as analytics">
                         <!-- Analytics Page Content -->
@@ -283,59 +510,99 @@
                                 </div>
                             </div>
 
-                            <!-- Stats Tile - Clickable to Farms -->
-                            <div class="stats-tile" ng-click="analytics.goToFarms()">
-                                <div class="stats-tile-header">
-                                    <h4><i class="fas fa-tachometer-alt"></i> System Overview</h4>
-                                    <span class="view-link">View Farms <i class="fas fa-arrow-right"></i></span>
+                            <!-- Analytics Tiles Grid -->
+                            <div class="analytics-tiles-grid">
+                                <!-- Stats Tile - Clickable to Farms -->
+                                <div class="stats-tile" ng-click="analytics.goToFarms()">
+                                    <div class="stats-tile-header">
+                                        <h4><i class="fas fa-seedling"></i> System Overview</h4>
+                                        <span class="view-link">View Farms <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                    <div class="stats-tile-content">
+                                        <div class="stat-item">
+                                            <div class="stat-item-icon farms">
+                                                <i class="fas fa-seedling"></i>
+                                            </div>
+                                            <div class="stat-item-value">{{analytics.stats.totalFarms}}</div>
+                                            <div class="stat-item-label">Total Farms</div>
+                                        </div>
+                                        
+                                        <div class="stat-item">
+                                            <div class="stat-item-icon devices">
+                                                <i class="fas fa-microchip"></i>
+                                            </div>
+                                            <div class="stat-item-value">{{analytics.stats.totalDevices}}</div>
+                                            <div class="stat-item-label">Active Devices</div>
+                                        </div>
+                                        
+                                        <div class="stat-item">
+                                            <div class="stat-item-icon anomalies">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </div>
+                                            <div class="stat-item-value">{{analytics.stats.anomalyCount}}</div>
+                                            <div class="stat-item-label">Anomalies Detected</div>
+                                        </div>
+                                        
+                                        <div class="stat-item">
+                                            <div class="stat-item-icon confidence">
+                                                <i class="fas fa-chart-line"></i>
+                                            </div>
+                                            <div class="stat-item-value">{{analytics.stats.avgConfidence}}%</div>
+                                            <div class="stat-item-label">Avg. Confidence</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="stats-tile-content">
-                                    <div class="stat-item">
-                                        <div class="stat-item-icon farms">
+
+                                <!-- Device Locations & Distribution Tile - Clickable to Geography -->
+                                <div class="device-locations-tile" ng-click="analytics.goToGeographic()">
+                                <div class="device-locations-tile-header">
+                                    <h4><i class="fas fa-map-pin"></i> Device Locations & Distribution</h4>
+                                    <span class="view-link">View Details <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                                <div class="device-locations-tile-content">
+                                    <!-- Device Status Cards -->
+                                    <div class="device-status-cards">
+                                        <div class="device-status-card normal">
+                                            <div class="device-status-icon">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <div class="device-status-value">{{analytics.deviceStatus.normal}}</div>
+                                            <div class="device-status-label">Normal Devices</div>
+                                        </div>
+                                        <div class="device-status-card suspicious">
+                                            <div class="device-status-icon">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </div>
+                                            <div class="device-status-value">{{analytics.deviceStatus.suspicious}}</div>
+                                            <div class="device-status-label">Suspicious</div>
+                                        </div>
+                                        <div class="device-status-card anomaly">
+                                            <div class="device-status-icon">
+                                                <i class="fas fa-times-circle"></i>
+                                            </div>
+                                            <div class="device-status-value">{{analytics.deviceStatus.anomalies}}</div>
+                                            <div class="device-status-label">Anomalies</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Top Locations -->
+                                    <div class="top-locations-section">
+                                        <div class="top-locations-header">
                                             <i class="fas fa-seedling"></i>
+                                            <span>Top Locations</span>
                                         </div>
-                                        <div class="stat-item-value">{{analytics.stats.totalFarms}}</div>
-                                        <div class="stat-item-label">Total Farms</div>
-                                    </div>
-                                    
-                                    <div class="stat-item">
-                                        <div class="stat-item-icon devices">
-                                            <i class="fas fa-microchip"></i>
+                                        <div class="top-locations-list">
+                                            <div class="top-location-item" ng-repeat="location in analytics.topLocations">
+                                                <i class="fas fa-map-pin"></i>
+                                                <span>{{location.name}} ({{location.count}})</span>
+                                            </div>
+                                            <div class="empty-state-modern" ng-if="analytics.topLocations.length === 0">
+                                                <p>No locations available</p>
+                                            </div>
                                         </div>
-                                        <div class="stat-item-value">{{analytics.stats.totalDevices}}</div>
-                                        <div class="stat-item-label">Active Devices</div>
-                                    </div>
-                                    
-                                    <div class="stat-item">
-                                        <div class="stat-item-icon anomalies">
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                        </div>
-                                        <div class="stat-item-value">{{analytics.stats.anomalyCount}}</div>
-                                        <div class="stat-item-label">Anomalies Detected</div>
-                                    </div>
-                                    
-                                    <div class="stat-item">
-                                        <div class="stat-item-icon confidence">
-                                            <i class="fas fa-chart-line"></i>
-                                        </div>
-                                        <div class="stat-item-value">{{analytics.stats.avgConfidence}}%</div>
-                                        <div class="stat-item-label">Avg. Confidence</div>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Map Tile - Geographic Threat Distribution (Clickable) -->
-                            <div class="map-tile" ng-click="analytics.goToGeographic()">
-                                <div class="map-tile-header">
-                                    <h4><i class="fas fa-map-marked-alt"></i> Geographic Threat Distribution - India</h4>
-                                    <span class="view-link">View Full Map <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                                <div class="map-tile-content">
-                                    <india-map 
-                                        events="analytics.mapEvents" 
-                                        on-event-click="analytics.openEventModal(event)">
-                                    </india-map>
-                                </div>
                             </div>
 
                             <!-- Loading State -->
@@ -346,7 +613,7 @@
                             <!-- Charts Grid -->
                             <div class="charts-grid" ng-if="!analytics.isLoading">
                                 <!-- Devices Over Time -->
-                                <div class="chart-card">
+                                <div class="chart-card" ng-click="analytics.goToDevices()" style="cursor: pointer;">
                                     <h4><i class="fas fa-microchip"></i> Devices Over Time</h4>
                                     <div class="chart-container">
                                         <canvas id="devicesChart"></canvas>
@@ -362,34 +629,10 @@
                                 </div>
 
                                 <!-- Records Anomaly Score by Event -->
-                                <div class="chart-card">
+                                <div class="chart-card" ng-click="analytics.goToRecords()" style="cursor: pointer;">
                                     <h4><i class="fas fa-clipboard-list"></i> Records Anomaly Score by Event</h4>
                                     <div class="chart-container">
                                         <canvas id="recordsChart"></canvas>
-                                    </div>
-                                </div>
-
-                                <!-- Records by Device Type -->
-                                <div class="chart-card">
-                                    <h4><i class="fas fa-server"></i> Records by Device Type</h4>
-                                    <div class="chart-container">
-                                        <canvas id="deviceTypeChart"></canvas>
-                                    </div>
-                                </div>
-
-                                <!-- Response Actions Distribution -->
-                                <div class="chart-card">
-                                    <h4><i class="fas fa-shield-alt"></i> Response Actions</h4>
-                                    <div class="chart-container">
-                                        <canvas id="responseActionsChart"></canvas>
-                                    </div>
-                                </div>
-
-                                <!-- Anomaly Score by Farm -->
-                                <div class="chart-card">
-                                    <h4><i class="fas fa-seedling"></i> Avg Anomaly Score by Farm</h4>
-                                    <div class="chart-container">
-                                        <canvas id="farmAnomalyChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -893,10 +1136,14 @@
                                                 <th>Event ID</th>
                                                 <th>Device</th>
                                                 <th>Prediction</th>
+                                                <th>Asset Type</th>
+                                                <th>Action Type</th>
+                                                <th>Resource Type</th>
+                                                <th>Authorization Status</th>
                                                 <th>Anomaly Score</th>
                                                 <th>Confidence</th>
                                                 <th>Response Action</th>
-                                                <th>Processed At</th>
+                                                <th>Timestamp</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -911,6 +1158,18 @@
                                                         {{record.prediction}}
                                                     </span>
                                                 </td>
+                                                <td>{{record.asset_type}}</td>
+                                                <td>{{record.action_type}}</td>
+                                                <td>{{record.resource_type}}</td>
+                                                <td>
+                                                    <span class="status-badge" ng-class="{
+                                                        'badge-normal': record.authorization_status === 'Authorized',
+                                                        'badge-suspicious': record.authorization_status === 'Suspicious',
+                                                        'badge-anomaly': record.authorization_status === 'Unauthorized'
+                                                    }">
+                                                        {{record.authorization_status}}
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <span class="detail-value score-value">{{record.anomaly_score | number:2}}</span>
                                                 </td>
@@ -922,7 +1181,7 @@
                                                 </td>
                                             </tr>
                                             <tr ng-repeat-end ng-if="records.expandedRow === record.id" class="expanded-row">
-                                                <td colspan="8">
+                                                <td colspan="12">
                                                     <div class="expanded-content">
                                                         <div class="detail-grid" style="padding: 1rem;">
                                                             <div class="detail-item">
@@ -934,15 +1193,51 @@
                                                                 <span class="detail-value">{{record.device_id}}</span>
                                                             </div>
                                                             <div class="detail-item">
+                                                                <span class="detail-label">Device Name</span>
+                                                                <span class="detail-value">{{record.device_name}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
                                                                 <span class="detail-label">Farm ID</span>
                                                                 <span class="detail-value">{{record.farm_id}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Farm Name</span>
+                                                                <span class="detail-value">{{record.farm_name}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Asset Type</span>
+                                                                <span class="detail-value">{{record.asset_type}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Action Type</span>
+                                                                <span class="detail-value">{{record.action_type}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Resource Type</span>
+                                                                <span class="detail-value">{{record.resource_type}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Authorization Status</span>
+                                                                <span class="detail-value">
+                                                                    <span class="status-badge" ng-class="{
+                                                                        'badge-normal': record.authorization_status === 'Authorized',
+                                                                        'badge-suspicious': record.authorization_status === 'Suspicious',
+                                                                        'badge-anomaly': record.authorization_status === 'Unauthorized'
+                                                                    }">
+                                                                        {{record.authorization_status}}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Timestamp</span>
+                                                                <span class="detail-value">{{record.processed_at | date:'medium'}}</span>
                                                             </div>
                                                             <div class="detail-item">
                                                                 <span class="detail-label">Location</span>
                                                                 <span class="detail-value">{{record.latitude | number:4}}°, {{record.longitude | number:4}}°</span>
                                                             </div>
                                                             <div class="detail-item full-width">
-                                                                <span class="detail-label">Analysis & Reasons</span>
+                                                                <span class="detail-label">Reason</span>
                                                                 <span class="detail-value reasons-text">{{record.reasons}}</span>
                                                             </div>
                                                         </div>
@@ -994,19 +1289,31 @@
                             <!-- Page Header -->
                             <div class="page-header">
                                 <h2>India Threat Map</h2>
-                                <div class="geo-stats">
-                                    <div class="geo-stat-item">
-                                        <span class="geo-stat-value normal">{{geo.stats.normal}}</span>
-                                        <span class="geo-stat-label">Normal</span>
-                                    </div>
-                                    <div class="geo-stat-item">
-                                        <span class="geo-stat-value suspicious">{{geo.stats.suspicious}}</span>
-                                        <span class="geo-stat-label">Suspicious</span>
-                                    </div>
-                                    <div class="geo-stat-item">
-                                        <span class="geo-stat-value anomaly">{{geo.stats.anomaly}}</span>
-                                        <span class="geo-stat-label">Anomaly</span>
-                                    </div>
+                                <div class="geo-controls">
+                                    <button class="btn btn-secondary btn-sm" ng-click="geo.refreshLocations()">
+                                        <i class="fas fa-sync-alt"></i>
+                                        Refresh
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm" ng-click="geo.clearAllMarkers()">
+                                        <i class="fas fa-trash-alt"></i>
+                                        Clear Markers
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Stats Row -->
+                            <div class="geo-stats-row">
+                                <div class="geo-stat-item">
+                                    <span class="geo-stat-value normal">{{geo.stats.normal}}</span>
+                                    <span class="geo-stat-label">Normal</span>
+                                </div>
+                                <div class="geo-stat-item">
+                                    <span class="geo-stat-value suspicious">{{geo.stats.suspicious}}</span>
+                                    <span class="geo-stat-label">Suspicious</span>
+                                </div>
+                                <div class="geo-stat-item">
+                                    <span class="geo-stat-value anomaly">{{geo.stats.anomaly}}</span>
+                                    <span class="geo-stat-label">Anomaly</span>
                                 </div>
                             </div>
 
@@ -1015,52 +1322,69 @@
                                 <div class="loading-spinner"></div>
                             </div>
 
-                            <!-- Main Map Container -->
+                            <!-- Main Leaflet Map Container -->
                             <div class="geo-map-container" ng-if="!geo.isLoading">
-                                <div class="geo-map-card">
-                                    <india-map 
-                                        events="geo.mapEvents" 
-                                        on-event-click="geo.openEventModal(event)"
-                                        full-view="true">
-                                    </india-map>
+                                <div class="leaflet-map-card">
+                                    <leaflet-india-map 
+                                        devices="geo.devices" 
+                                        on-device-click="geo.openDeviceModal(device)"
+                                        on-clear-markers="geo.onClearMarkers()"
+                                        on-refresh="geo.onRefresh()">
+                                    </leaflet-india-map>
+                                    
+                                    <!-- Map Legend - Merged with card -->
+                                    <div class="leaflet-map-legend">
+                                        <div class="legend-item">
+                                            <div class="legend-color normal"></div>
+                                            <span>Normal</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color suspicious"></div>
+                                            <span>Suspicious</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color anomaly"></div>
+                                            <span>Anomaly</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Events List -->
+                            <!-- Device Details List -->
                             <div class="geo-events-section" ng-if="!geo.isLoading">
-                                <h3><i class="fas fa-list-ul"></i> Recent Threat Events</h3>
+                                <h3><i class="fas fa-microchip"></i> Device Details</h3>
                                 <div class="geo-events-grid">
                                     <div class="geo-event-card" 
-                                         ng-repeat="event in geo.mapEvents | limitTo:6"
-                                         ng-click="geo.openEventModal(event)">
+                                         ng-repeat="device in geo.devices | limitTo:6"
+                                         data-device-id="{{device.id}}"
+                                         ng-click="geo.openDeviceModal(device)">
                                         <div class="geo-event-header">
-                                            <span class="geo-event-id">{{event.id}}</span>
+                                            <span class="geo-event-id">{{device.name}}</span>
                                             <span class="status-badge" ng-class="{
-                                                'badge-normal': event.prediction === 'Normal',
-                                                'badge-suspicious': event.prediction === 'Suspicious',
-                                                'badge-anomaly': event.prediction === 'Anomaly'
-                                            }">{{event.prediction}}</span>
+                                                'badge-normal': device.is_active,
+                                                'badge-anomaly': !device.is_active
+                                            }">{{device.is_active ? 'Active' : 'Inactive'}}</span>
                                         </div>
                                         <div class="geo-event-body">
                                             <div class="geo-event-row">
                                                 <i class="fas fa-microchip"></i>
-                                                <span>{{event.asset_type}}</span>
+                                                <span>{{device.type}}</span>
                                             </div>
                                             <div class="geo-event-row">
                                                 <i class="fas fa-seedling"></i>
-                                                <span>{{event.farm_name}}</span>
+                                                <span>{{device.farm_name}}</span>
                                             </div>
                                             <div class="geo-event-row">
                                                 <i class="fas fa-map-pin"></i>
-                                                <span>{{event.latitude | number:2}}°, {{event.longitude | number:2}}°</span>
+                                                <span>{{device.baseline_lat | number:2}}°, {{device.baseline_long | number:2}}°</span>
+                                            </div>
+                                            <div class="geo-event-row">
+                                                <i class="fas fa-code"></i>
+                                                <span>{{device.os}}</span>
                                             </div>
                                             <div class="geo-event-score">
-                                                <span class="score-label">Anomaly Score</span>
-                                                <span class="score-value" ng-class="{
-                                                    'score-low': event.anomaly_score < 0.3,
-                                                    'score-medium': event.anomaly_score >= 0.3 && event.anomaly_score < 0.6,
-                                                    'score-high': event.anomaly_score >= 0.6
-                                                }">{{event.anomaly_score | number:2}}</span>
+                                                <span class="score-label">Device ID</span>
+                                                <span class="score-value">{{device.id}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1223,10 +1547,37 @@
         </div>
     </div>
 
+    <!-- Leaflet Popup Positioning Fix -->
+    <style>
+        /* Ensure consistent popup positioning above markers */
+        .leaflet-popup-content-wrapper {
+            margin: 0 !important;
+        }
+        .custom-popup.hover-popup-wrapper {
+            margin-bottom: 0 !important;
+        }
+        .leaflet-popup-tip {
+            margin-top: 0 !important;
+        }
+        /* Ensure popup is always positioned relative to marker */
+        .leaflet-popup {
+            pointer-events: none;
+        }
+        .leaflet-popup-content {
+            margin: 0;
+            pointer-events: auto;
+        }
+    </style>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
     
     <!-- Single App JS File -->
     <script src="index.js"></script>

@@ -38,21 +38,21 @@
             { id: 10, name: 'Weather Station Zeta', type: 'Weather Station', farm_id: 5, farm_name: 'Deccan Plateau Farm', os: 'WeatherOS 2.5', is_active: false, baseline_lat: 17.3855, baseline_long: 78.4870, last_seen: '2024-01-18T19:30:00Z', created_at: '2024-01-18T17:30:00Z', owner_user_id: 1 }
         ],
         records: [
-            { id: 1, event_id: 'EVT-001', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.12, confidence: 0.95, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'All sensor readings within expected parameters. Soil moisture at 45%, temperature at 22°C.', processed_at: '2024-01-20T10:00:00Z', asset_type: 'Soil Sensor' },
-            { id: 2, event_id: 'EVT-002', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.08, confidence: 0.97, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Weather data consistent with regional forecasts. No anomalies detected.', processed_at: '2024-01-20T09:55:00Z', asset_type: 'Weather Station' },
-            { id: 3, event_id: 'EVT-003', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Suspicious', anomaly_score: 0.45, confidence: 0.82, response_action: 'Alert Sent', latitude: 19.0760, longitude: 72.8777, reasons: 'Unusual command sequence detected. Water flow rate 20% higher than scheduled. Possible misconfiguration or unauthorized access attempt.', processed_at: '2024-01-20T09:45:00Z', asset_type: 'Controller' },
-            { id: 4, event_id: 'EVT-004', device_id: 4, device_name: 'Gateway Hub Central', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.15, confidence: 0.91, response_action: 'None', latitude: 19.0765, longitude: 72.8780, reasons: 'Network traffic patterns normal. All connected devices responding within expected latency.', processed_at: '2024-01-20T09:50:00Z', asset_type: 'Gateway' },
-            { id: 5, event_id: 'EVT-005', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.78, confidence: 0.88, response_action: 'Device Isolated', latitude: 13.0827, longitude: 80.2707, reasons: 'GPS location drift detected (>500m from baseline). Possible device tampering or relocation. Sensor readings inconsistent with neighboring devices.', processed_at: '2024-01-20T09:40:00Z', asset_type: 'Soil Sensor' },
-            { id: 6, event_id: 'EVT-006', device_id: 6, device_name: 'Weather Station Delta', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.85, confidence: 0.92, response_action: 'Device Isolated', latitude: 13.0830, longitude: 80.2710, reasons: 'Device offline for extended period. Last known readings showed temperature spike inconsistent with regional data. Possible hardware failure or cyber attack.', processed_at: '2024-01-19T18:00:00Z', asset_type: 'Weather Station' },
-            { id: 7, event_id: 'EVT-007', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.10, confidence: 0.96, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Irrigation schedule executed as planned. Water consumption within expected range.', processed_at: '2024-01-20T09:30:00Z', asset_type: 'Controller' },
-            { id: 8, event_id: 'EVT-008', device_id: 8, device_name: 'Gateway Hub North', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Suspicious', anomaly_score: 0.52, confidence: 0.79, response_action: 'Alert Sent', latitude: 31.1475, longitude: 75.3415, reasons: 'Unusual login attempt from unrecognized IP address. Authentication successful but access pattern differs from historical baseline.', processed_at: '2024-01-20T09:35:00Z', asset_type: 'Gateway' },
-            { id: 9, event_id: 'EVT-009', device_id: 9, device_name: 'Soil Sensor Epsilon', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Anomaly', anomaly_score: 0.91, confidence: 0.94, response_action: 'Device Isolated', latitude: 17.3850, longitude: 78.4867, reasons: 'Communication protocol violation detected. Device sending malformed packets. Possible firmware corruption or injection attack.', processed_at: '2024-01-18T20:00:00Z', asset_type: 'Soil Sensor' },
-            { id: 10, event_id: 'EVT-010', device_id: 10, device_name: 'Weather Station Zeta', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Suspicious', anomaly_score: 0.48, confidence: 0.85, response_action: 'Alert Sent', latitude: 17.3855, longitude: 78.4870, reasons: 'Data transmission frequency increased by 300%. Possible data exfiltration attempt or sensor malfunction.', processed_at: '2024-01-18T19:30:00Z', asset_type: 'Weather Station' },
-            { id: 11, event_id: 'EVT-011', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.11, confidence: 0.94, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'Routine check passed. All parameters nominal.', processed_at: '2024-01-20T08:00:00Z', asset_type: 'Soil Sensor' },
-            { id: 12, event_id: 'EVT-012', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.18, confidence: 0.89, response_action: 'None', latitude: 19.0760, longitude: 72.8777, reasons: 'Morning irrigation cycle completed successfully.', processed_at: '2024-01-20T07:30:00Z', asset_type: 'Controller' },
-            { id: 13, event_id: 'EVT-013', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Suspicious', anomaly_score: 0.55, confidence: 0.81, response_action: 'Alert Sent', latitude: 13.0827, longitude: 80.2707, reasons: 'Minor GPS drift detected. Monitoring for further anomalies.', processed_at: '2024-01-20T06:00:00Z', asset_type: 'Soil Sensor' },
-            { id: 14, event_id: 'EVT-014', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.09, confidence: 0.97, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Evening irrigation cycle completed. Water usage optimal.', processed_at: '2024-01-19T18:30:00Z', asset_type: 'Controller' },
-            { id: 15, event_id: 'EVT-015', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.07, confidence: 0.98, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Daily weather summary generated. All readings consistent.', processed_at: '2024-01-19T23:59:00Z', asset_type: 'Weather Station' }
+            { id: 1, event_id: 'EVT-001', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.12, confidence: 0.95, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'All sensor readings within expected parameters. Soil moisture at 45%, temperature at 22°C.', processed_at: '2024-01-20T10:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Authorized' },
+            { id: 2, event_id: 'EVT-002', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.08, confidence: 0.97, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Weather data consistent with regional forecasts. No anomalies detected.', processed_at: '2024-01-20T09:55:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Weather Data', authorization_status: 'Authorized' },
+            { id: 3, event_id: 'EVT-003', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Suspicious', anomaly_score: 0.45, confidence: 0.82, response_action: 'Alert Sent', latitude: 19.0760, longitude: 72.8777, reasons: 'Unusual command sequence detected. Water flow rate 20% higher than scheduled. Possible misconfiguration or unauthorized access attempt.', processed_at: '2024-01-20T09:45:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Suspicious' },
+            { id: 4, event_id: 'EVT-004', device_id: 4, device_name: 'Gateway Hub Central', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.15, confidence: 0.91, response_action: 'None', latitude: 19.0765, longitude: 72.8780, reasons: 'Network traffic patterns normal. All connected devices responding within expected latency.', processed_at: '2024-01-20T09:50:00Z', asset_type: 'Gateway', action_type: 'Read', resource_type: 'Network Traffic', authorization_status: 'Authorized' },
+            { id: 5, event_id: 'EVT-005', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.78, confidence: 0.88, response_action: 'Device Isolated', latitude: 13.0827, longitude: 80.2707, reasons: 'GPS location drift detected (>500m from baseline). Possible device tampering or relocation. Sensor readings inconsistent with neighboring devices.', processed_at: '2024-01-20T09:40:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Location Data', authorization_status: 'Unauthorized' },
+            { id: 6, event_id: 'EVT-006', device_id: 6, device_name: 'Weather Station Delta', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.85, confidence: 0.92, response_action: 'Device Isolated', latitude: 13.0830, longitude: 80.2710, reasons: 'Device offline for extended period. Last known readings showed temperature spike inconsistent with regional data. Possible hardware failure or cyber attack.', processed_at: '2024-01-19T18:00:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Unauthorized' },
+            { id: 7, event_id: 'EVT-007', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.10, confidence: 0.96, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Irrigation schedule executed as planned. Water consumption within expected range.', processed_at: '2024-01-20T09:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
+            { id: 8, event_id: 'EVT-008', device_id: 8, device_name: 'Gateway Hub North', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Suspicious', anomaly_score: 0.52, confidence: 0.79, response_action: 'Alert Sent', latitude: 31.1475, longitude: 75.3415, reasons: 'Unusual login attempt from unrecognized IP address. Authentication successful but access pattern differs from historical baseline.', processed_at: '2024-01-20T09:35:00Z', asset_type: 'Gateway', action_type: 'Access', resource_type: 'Authentication', authorization_status: 'Suspicious' },
+            { id: 9, event_id: 'EVT-009', device_id: 9, device_name: 'Soil Sensor Epsilon', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Anomaly', anomaly_score: 0.91, confidence: 0.94, response_action: 'Device Isolated', latitude: 17.3850, longitude: 78.4867, reasons: 'Communication protocol violation detected. Device sending malformed packets. Possible firmware corruption or injection attack.', processed_at: '2024-01-18T20:00:00Z', asset_type: 'Soil Sensor', action_type: 'Write', resource_type: 'Communication', authorization_status: 'Unauthorized' },
+            { id: 10, event_id: 'EVT-010', device_id: 10, device_name: 'Weather Station Zeta', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Suspicious', anomaly_score: 0.48, confidence: 0.85, response_action: 'Alert Sent', latitude: 17.3855, longitude: 78.4870, reasons: 'Data transmission frequency increased by 300%. Possible data exfiltration attempt or sensor malfunction.', processed_at: '2024-01-18T19:30:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Data Transmission', authorization_status: 'Suspicious' },
+            { id: 11, event_id: 'EVT-011', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.11, confidence: 0.94, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'Routine check passed. All parameters nominal.', processed_at: '2024-01-20T08:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Authorized' },
+            { id: 12, event_id: 'EVT-012', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.18, confidence: 0.89, response_action: 'None', latitude: 19.0760, longitude: 72.8777, reasons: 'Morning irrigation cycle completed successfully.', processed_at: '2024-01-20T07:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
+            { id: 13, event_id: 'EVT-013', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Suspicious', anomaly_score: 0.55, confidence: 0.81, response_action: 'Alert Sent', latitude: 13.0827, longitude: 80.2707, reasons: 'Minor GPS drift detected. Monitoring for further anomalies.', processed_at: '2024-01-20T06:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Location Data', authorization_status: 'Suspicious' },
+            { id: 14, event_id: 'EVT-014', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.09, confidence: 0.97, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Evening irrigation cycle completed. Water usage optimal.', processed_at: '2024-01-19T18:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
+            { id: 15, event_id: 'EVT-015', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.07, confidence: 0.98, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Daily weather summary generated. All readings consistent.', processed_at: '2024-01-19T23:59:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Weather Data', authorization_status: 'Authorized' }
         ],
         devicesData: [
             { date: 'Jan 10', active: 2, inactive: 0 }, { date: 'Jan 11', active: 3, inactive: 0 }, { date: 'Jan 12', active: 4, inactive: 0 },
@@ -60,7 +60,13 @@
             { date: 'Jan 16', active: 7, inactive: 1 }, { date: 'Jan 17', active: 8, inactive: 1 }, { date: 'Jan 18', active: 7, inactive: 3 },
             { date: 'Jan 19', active: 7, inactive: 3 }, { date: 'Jan 20', active: 7, inactive: 3 }
         ],
-        predictionDistribution: { normal: 8, suspicious: 4, anomaly: 3 }
+        predictionDistribution: { normal: 8, suspicious: 4, anomaly: 3 },
+        recordsData: [
+            { date: 'Jan 10', count: 1 }, { date: 'Jan 11', count: 1 }, { date: 'Jan 12', count: 2 },
+            { date: 'Jan 13', count: 1 }, { date: 'Jan 14', count: 2 }, { date: 'Jan 15', count: 1 },
+            { date: 'Jan 16', count: 1 }, { date: 'Jan 17', count: 1 }, { date: 'Jan 18', count: 3 },
+            { date: 'Jan 19', count: 2 }, { date: 'Jan 20', count: 5 }
+        ]
     };
 
     // ============================================
@@ -83,7 +89,19 @@
                     controllerAs: 'vm'
                 })
                 .when('/dashboard', {
-                    redirectTo: '/dashboard/analytics'
+                    redirectTo: '/dashboard/home'
+                })
+                .when('/dashboard/home', {
+                    templateUrl: 'dashboard.html',
+                    controller: 'DashboardController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        auth: ['AuthService', '$location', function(AuthService, $location) {
+                            if (!AuthService.isAuthenticated()) {
+                                $location.path('/login');
+                            }
+                        }]
+                    }
                 })
                 .when('/dashboard/analytics', {
                     templateUrl: 'dashboard.html',
@@ -213,6 +231,7 @@
                 getRecords: function() { return $q.resolve(MOCK_DATA.records); },
                 getDevicesData: function() { return $q.resolve(MOCK_DATA.devicesData); },
                 getPredictionDistribution: function() { return $q.resolve(MOCK_DATA.predictionDistribution); },
+                getRecordsData: function() { return $q.resolve(MOCK_DATA.recordsData); },
                 getRecordsTimelineData: function() {
                     // Generate records timeline from actual records data by event
                     var records = MOCK_DATA.records.slice().sort(function(a, b) {
@@ -252,7 +271,7 @@
                     for (var farm in farmData) {
                         result.push({ farm: farm, avgScore: farmData[farm].total / farmData[farm].count });
                     }
-                    return $q.resolve(result.sort(function(a, b) { return b.avgScore - a.avgScore; }));
+                    return $q.resolve(result);
                 },
                 getMapEvents: function() {
                     var events = MOCK_DATA.records.map(function(r) {
@@ -336,7 +355,7 @@
     angular.module('cropGuardApp')
         .controller('LandingController', ['$location', 'AuthService', function($location, AuthService) {
             var vm = this;
-            if (AuthService.isAuthenticated()) { $location.path('/dashboard/analytics'); return; }
+            if (AuthService.isAuthenticated()) { $location.path('/dashboard/home'); return; }
             vm.goToLogin = function() { $location.path('/login'); };
         }]);
 
@@ -347,7 +366,7 @@
     angular.module('cropGuardApp')
         .controller('LoginController', ['$location', 'AuthService', function($location, AuthService) {
             var vm = this;
-            if (AuthService.isAuthenticated()) { $location.path('/dashboard/analytics'); return; }
+            if (AuthService.isAuthenticated()) { $location.path('/dashboard/home'); return; }
 
             vm.email = '';
             vm.password = '';
@@ -360,7 +379,7 @@
                 vm.isLoading = true;
 
                 AuthService.login(vm.email, vm.password)
-                    .then(function() { $location.path('/dashboard/analytics'); })
+                    .then(function() { $location.path('/dashboard/home'); })
                     .catch(function(error) { vm.error = error.message || 'Invalid credentials'; })
                     .finally(function() { vm.isLoading = false; });
             };
@@ -386,6 +405,7 @@
             vm.mapEvents = [];
 
             vm.navItems = [
+                { id: 'home', label: 'Home', icon: 'fa-home', route: '/dashboard/home' },
                 { id: 'analytics', label: 'Analytics', icon: 'fa-chart-line', route: '/dashboard/analytics' },
                 { id: 'geographic', label: 'Geographic', icon: 'fa-map-marked-alt', route: '/dashboard/geographic' },
                 { id: 'farms', label: 'Farms', icon: 'fa-seedling', route: '/dashboard/farms' },
@@ -407,6 +427,10 @@
             vm.closeRightSidebar = function() { vm.rightSidebarOpen = false; };
             vm.openEventModal = function(event) { $scope.$emit('openEventModal', event); };
 
+            // Load devices for map preview
+            DataService.getDevices().then(function(devices) {
+                vm.mapDevices = devices;
+            });
             DataService.getMapEvents().then(function(events) { vm.mapEvents = events; });
             $scope.$on('openMapSidebar', function() { vm.rightSidebarOpen = true; });
 
@@ -422,16 +446,18 @@
 
             function getCurrentPage() {
                 var path = $location.path();
+                if (path.indexOf('/dashboard/home') === 0) return 'home';
                 if (path.indexOf('/dashboard/farms') === 0) return $routeParams.id ? 'farm-detail' : 'farms';
                 if (path.indexOf('/dashboard/devices') === 0) return $routeParams.id ? 'device-detail' : 'devices';
                 if (path.indexOf('/dashboard/records') === 0) return 'records';
                 if (path.indexOf('/dashboard/geographic') === 0) return 'geographic';
                 if (path.indexOf('/dashboard/account') === 0) return 'account';
-                return 'analytics';
+                if (path.indexOf('/dashboard/analytics') === 0) return 'analytics';
+                return 'home';
             }
 
             function getPageTitle() {
-                var titles = { 'farms': 'Farms', 'farm-detail': 'Farm Details', 'devices': 'Devices', 'device-detail': 'Device Details', 'records': 'ML Records', 'analytics': 'Analytics Dashboard', 'geographic': 'Geographic Threat Map', 'account': 'Account Details' };
+                var titles = { 'home': 'Dashboard Home', 'farms': 'Farms', 'farm-detail': 'Farm Details', 'devices': 'Devices', 'device-detail': 'Device Details', 'records': 'ML Records', 'analytics': 'Analytics Dashboard', 'geographic': 'Geographic Threat Map', 'account': 'Account Details' };
                 return titles[vm.currentPage] || 'Dashboard';
             }
         }]);
@@ -449,15 +475,16 @@
             vm.isLoading = true;
             vm.mapEvents = [];
             vm.stats = { totalFarms: 0, totalDevices: 0, anomalyCount: 0, avgConfidence: 0 };
+            vm.deviceStatus = { normal: 0, suspicious: 0, anomalies: 0 };
+            vm.topLocations = [];
             vm.devicesChart = null;
             vm.predictionChart = null;
             vm.recordsChart = null;
-            vm.deviceTypeChart = null;
-            vm.responseActionsChart = null;
-            vm.farmAnomalyChart = null;
 
             vm.onFarmChange = function() { loadData(); };
             vm.goToFarms = function() { $location.path('/dashboard/farms'); };
+            vm.goToDevices = function() { $location.path('/dashboard/devices'); };
+            vm.goToRecords = function() { $location.path('/dashboard/records'); };
             vm.goToGeographic = function() { $location.path('/dashboard/geographic'); };
             vm.openMapSidebar = function() { $scope.$emit('openMapSidebar'); };
             vm.openEventModal = function(event) { $scope.$emit('openEventModal', event); };
@@ -472,23 +499,20 @@
                     DataService.getDevicesData(),
                     DataService.getPredictionDistribution(),
                     DataService.getRecordsTimelineData(),
-                    DataService.getMapEvents(),
                     DataService.getDevices(),
                     DataService.getRecords(),
-                    DataService.getRecordsByDeviceType(),
-                    DataService.getResponseActionsData(),
-                    DataService.getAnomalyScoreByFarm()
+                    DataService.getMapEvents()
                 ])
                 .then(function(results) {
                     var devicesData = results[0];
                     var predictionData = results[1];
                     var recordsTimelineData = results[2];
-                    vm.mapEvents = results[3];
-                    var devices = results[4];
-                    var records = results[5];
-                    var deviceTypeData = results[6];
-                    var responseActionsData = results[7];
-                    var farmAnomalyData = results[8];
+                    var devices = results[3];
+                    var records = results[4];
+                    vm.mapEvents = results[5];
+                    
+                    // Convert devices to map format for preview
+                    vm.mapDevices = devices;
 
                     vm.stats.totalDevices = devices.length;
                     vm.stats.anomalyCount = predictionData.anomaly || 0;
@@ -497,13 +521,50 @@
                     records.forEach(function(r) { totalConfidence += r.confidence; });
                     vm.stats.avgConfidence = records.length > 0 ? Math.round((totalConfidence / records.length) * 100) : 0;
 
+                    // Calculate device status counts from records
+                    // Initialize all devices as normal
+                    var deviceStatusMap = {};
+                    devices.forEach(function(device) {
+                        deviceStatusMap[device.id] = 'Normal';
+                    });
+
+                    // Update status based on records (keep most severe status)
+                    records.forEach(function(record) {
+                        if (deviceStatusMap[record.device_id]) {
+                            var current = deviceStatusMap[record.device_id];
+                            // Keep the most severe status (Anomaly > Suspicious > Normal)
+                            if (record.prediction === 'Anomaly' || 
+                                (record.prediction === 'Suspicious' && current !== 'Anomaly')) {
+                                deviceStatusMap[record.device_id] = record.prediction;
+                            }
+                        }
+                    });
+
+                    vm.deviceStatus.normal = 0;
+                    vm.deviceStatus.suspicious = 0;
+                    vm.deviceStatus.anomalies = 0;
+                    Object.values(deviceStatusMap).forEach(function(status) {
+                        if (status === 'Normal') vm.deviceStatus.normal++;
+                        else if (status === 'Suspicious') vm.deviceStatus.suspicious++;
+                        else if (status === 'Anomaly') vm.deviceStatus.anomalies++;
+                    });
+
+                    // Calculate top locations with device counts
+                    var locationMap = {};
+                    devices.forEach(function(device) {
+                        if (!locationMap[device.farm_name]) {
+                            locationMap[device.farm_name] = { name: device.farm_name, count: 0 };
+                        }
+                        locationMap[device.farm_name].count++;
+                    });
+                    vm.topLocations = Object.values(locationMap)
+                        .sort(function(a, b) { return b.count - a.count; })
+                        .slice(0, 5);
+
                     $timeout(function() {
                         renderDevicesChart(devicesData);
                         renderPredictionChart(predictionData);
                         renderRecordsChart(recordsTimelineData);
-                        renderDeviceTypeChart(deviceTypeData);
-                        renderResponseActionsChart(responseActionsData);
-                        renderFarmAnomalyChart(farmAnomalyData);
                     }, 100);
                 })
                 .finally(function() { $scope.$apply(function() { vm.isLoading = false; }); });
@@ -514,77 +575,21 @@
                 if (!ctx) return;
                 if (vm.devicesChart) vm.devicesChart.destroy();
 
-                var chartCtx = ctx.getContext('2d');
-                
-                // Create beautiful gradients
-                var activeGradient = chartCtx.createLinearGradient(0, 0, 0, 250);
-                activeGradient.addColorStop(0, 'rgba(52, 211, 153, 0.9)');
-                activeGradient.addColorStop(1, 'rgba(16, 185, 129, 0.7)');
-                
-                var inactiveGradient = chartCtx.createLinearGradient(0, 0, 0, 250);
-                inactiveGradient.addColorStop(0, 'rgba(248, 113, 113, 0.9)');
-                inactiveGradient.addColorStop(1, 'rgba(239, 68, 68, 0.7)');
-
                 vm.devicesChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: data.map(function(d) { return d.date; }),
                         datasets: [
-                            { 
-                                label: 'Active', 
-                                data: data.map(function(d) { return d.active; }), 
-                                backgroundColor: activeGradient, 
-                                borderColor: '#059669', 
-                                borderWidth: 2,
-                                borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 }
-                            },
-                            { 
-                                label: 'Inactive', 
-                                data: data.map(function(d) { return d.inactive; }), 
-                                backgroundColor: inactiveGradient, 
-                                borderColor: '#dc2626', 
-                                borderWidth: 2,
-                                borderRadius: { topLeft: 0, topRight: 0, bottomLeft: 6, bottomRight: 6 }
-                            }
+                            { label: 'Active Devices', data: data.map(function(d) { return d.active; }), backgroundColor: '#2e7d32', borderColor: '#2e7d32', borderWidth: 1 },
+                            { label: 'Inactive Devices', data: data.map(function(d) { return d.inactive; }), backgroundColor: '#d32f2f', borderColor: '#d32f2f', borderWidth: 1 }
                         ]
                     },
                     options: {
-                        responsive: true, 
-                        maintainAspectRatio: false,
-                        animation: { duration: 800, easing: 'easeOutCubic' },
-                        plugins: { 
-                            legend: { 
-                                position: 'bottom', 
-                                labels: { 
-                                    color: '#374151', 
-                                    padding: 16, 
-                                    usePointStyle: true, 
-                                    pointStyle: 'rectRounded',
-                                    font: { size: 11, weight: '600' }
-                                } 
-                            },
-                            tooltip: {
-                                backgroundColor: 'rgba(30, 61, 46, 0.95)',
-                                titleFont: { size: 13, weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                padding: 12,
-                                cornerRadius: 8
-                            }
-                        },
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { color: '#5a5a5a', padding: 15, usePointStyle: true, pointStyle: 'rect' } } },
                         scales: {
-                            x: { 
-                                stacked: true, 
-                                grid: { display: false }, 
-                                ticks: { color: '#6b7280', maxRotation: 45, font: { size: 10, weight: '500' } },
-                                border: { display: false }
-                            },
-                            y: { 
-                                stacked: true, 
-                                beginAtZero: true, 
-                                grid: { color: 'rgba(0, 0, 0, 0.05)', drawBorder: false }, 
-                                ticks: { color: '#6b7280', stepSize: 2, font: { size: 11 } },
-                                border: { display: false }
-                            }
+                            x: { stacked: true, grid: { color: 'rgba(0, 0, 0, 0.08)' }, ticks: { color: '#5a5a5a', maxRotation: 45, maxTicksLimit: 10 } },
+                            y: { stacked: true, beginAtZero: true, grid: { color: 'rgba(0, 0, 0, 0.08)' }, ticks: { color: '#5a5a5a', stepSize: 2 } }
                         }
                     }
                 });
@@ -595,71 +600,15 @@
                 if (!ctx) return;
                 if (vm.predictionChart) vm.predictionChart.destroy();
 
-                var chartCtx = ctx.getContext('2d');
-                
-                // Create elegant gradients for each prediction type
-                var normalGradient = chartCtx.createLinearGradient(0, 0, 0, 200);
-                normalGradient.addColorStop(0, '#34d399');
-                normalGradient.addColorStop(1, '#059669');
-                
-                var suspiciousGradient = chartCtx.createLinearGradient(0, 0, 0, 200);
-                suspiciousGradient.addColorStop(0, '#fbbf24');
-                suspiciousGradient.addColorStop(1, '#d97706');
-                
-                var anomalyGradient = chartCtx.createLinearGradient(0, 0, 0, 200);
-                anomalyGradient.addColorStop(0, '#f87171');
-                anomalyGradient.addColorStop(1, '#dc2626');
-
                 vm.predictionChart = new Chart(ctx, {
                     type: 'doughnut',
                     data: {
                         labels: ['Normal', 'Suspicious', 'Anomaly'],
-                        datasets: [{ 
-                            data: [data.normal, data.suspicious, data.anomaly], 
-                            backgroundColor: [normalGradient, suspiciousGradient, anomalyGradient],
-                            borderColor: ['#047857', '#b45309', '#b91c1c'],
-                            borderWidth: 3,
-                            hoverOffset: 15,
-                            hoverBorderWidth: 4,
-                            spacing: 3
-                        }]
+                        datasets: [{ data: [data.normal, data.suspicious, data.anomaly], backgroundColor: ['#2e7d32', '#ed6c02', '#d32f2f'], borderWidth: 0, hoverOffset: 10 }]
                     },
                     options: {
-                        responsive: true, 
-                        maintainAspectRatio: false, 
-                        cutout: '58%',
-                        animation: { 
-                            animateRotate: true, 
-                            animateScale: true,
-                            duration: 1000,
-                            easing: 'easeOutQuart'
-                        },
-                        plugins: { 
-                            legend: { 
-                                position: 'bottom', 
-                                labels: { 
-                                    color: '#374151', 
-                                    padding: 16, 
-                                    usePointStyle: true, 
-                                    pointStyle: 'rectRounded',
-                                    font: { size: 11, weight: '600' }
-                                } 
-                            },
-                            tooltip: {
-                                backgroundColor: 'rgba(30, 61, 46, 0.95)',
-                                titleFont: { size: 13, weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                padding: 12,
-                                cornerRadius: 8,
-                                callbacks: {
-                                    label: function(context) {
-                                        var total = context.dataset.data.reduce(function(a, b) { return a + b; }, 0);
-                                        var percentage = Math.round((context.raw / total) * 100);
-                                        return context.label + ': ' + context.raw + ' (' + percentage + '%)';
-                                    }
-                                }
-                            }
-                        }
+                        responsive: true, maintainAspectRatio: false, cutout: '65%',
+                        plugins: { legend: { position: 'bottom', labels: { color: '#5a5a5a', padding: 20, usePointStyle: true, pointStyle: 'circle' } } }
                     }
                 });
             }
@@ -669,350 +618,166 @@
                 if (!ctx) return;
                 if (vm.recordsChart) vm.recordsChart.destroy();
 
-                // Create gradient colors for each prediction type
-                var chartCtx = ctx.getContext('2d');
-                
-                var normalGradient = chartCtx.createLinearGradient(0, 0, 0, 250);
-                normalGradient.addColorStop(0, 'rgba(76, 175, 80, 0.9)');
-                normalGradient.addColorStop(1, 'rgba(46, 125, 50, 0.7)');
-                
-                var suspiciousGradient = chartCtx.createLinearGradient(0, 0, 0, 250);
-                suspiciousGradient.addColorStop(0, 'rgba(255, 167, 38, 0.9)');
-                suspiciousGradient.addColorStop(1, 'rgba(230, 126, 34, 0.7)');
-                
-                var anomalyGradient = chartCtx.createLinearGradient(0, 0, 0, 250);
-                anomalyGradient.addColorStop(0, 'rgba(239, 83, 80, 0.9)');
-                anomalyGradient.addColorStop(1, 'rgba(183, 28, 28, 0.7)');
-
+                // Color-code bars by prediction type
                 var barColors = data.map(function(d) {
                     switch (d.prediction) {
-                        case 'Normal': return normalGradient;
-                        case 'Suspicious': return suspiciousGradient;
-                        case 'Anomaly': return anomalyGradient;
-                        default: return normalGradient;
-                    }
-                });
-
-                var borderColors = data.map(function(d) {
-                    switch (d.prediction) {
                         case 'Normal': return '#2e7d32';
-                        case 'Suspicious': return '#e67e22';
-                        case 'Anomaly': return '#c0392b';
-                        default: return '#2e7d32';
+                        case 'Suspicious': return '#ed6c02';
+                        case 'Anomaly': return '#d32f2f';
+                        default: return '#1976d2';
                     }
                 });
 
                 vm.recordsChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: data.map(function(d) { return d.event.replace('EVT-', ''); }),
+                        labels: data.map(function(d) { return d.event; }),
                         datasets: [{ 
                             label: 'Anomaly Score', 
                             data: data.map(function(d) { return d.score; }), 
                             backgroundColor: barColors,
-                            borderColor: borderColors,
-                            borderWidth: 2,
-                            borderRadius: 6,
-                            borderSkipped: false,
-                            hoverBorderWidth: 3
+                            borderColor: barColors,
+                            borderWidth: 1
                         }]
                     },
                     options: {
-                        responsive: true, 
-                        maintainAspectRatio: false,
-                        animation: { duration: 1000, easing: 'easeOutQuart' },
+                        responsive: true, maintainAspectRatio: false,
                         plugins: { 
                             legend: { display: false },
                             tooltip: {
-                                backgroundColor: 'rgba(30, 61, 46, 0.95)',
-                                titleFont: { size: 13, weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                padding: 12,
-                                cornerRadius: 8,
-                                displayColors: true,
                                 callbacks: {
-                                    title: function(context) {
-                                        var d = data[context[0].dataIndex];
-                                        return 'Event ' + d.event;
-                                    },
                                     label: function(context) {
                                         var d = data[context.dataIndex];
-                                        return [d.prediction + ' • Score: ' + d.score.toFixed(2)];
+                                        return d.prediction + ': ' + d.score.toFixed(2);
                                     }
                                 }
                             }
                         },
                         scales: {
-                            x: { 
-                                grid: { display: false }, 
-                                ticks: { color: '#6b7280', maxRotation: 0, font: { size: 9, weight: '500' } },
-                                border: { display: false }
-                            },
-                            y: { 
-                                min: 0, 
-                                max: 1, 
-                                grid: { color: 'rgba(0, 0, 0, 0.06)', drawBorder: false }, 
-                                ticks: { color: '#6b7280', font: { size: 11 }, stepSize: 0.2 },
-                                border: { display: false }
-                            }
+                            x: { grid: { color: 'rgba(0, 0, 0, 0.08)' }, ticks: { color: '#5a5a5a', maxRotation: 45, font: { size: 10 } } },
+                            y: { min: 0, max: 1, grid: { color: 'rgba(0, 0, 0, 0.08)' }, ticks: { color: '#5a5a5a' } }
                         }
                     }
                 });
             }
 
-            function renderDeviceTypeChart(data) {
-                var ctx = document.getElementById('deviceTypeChart');
-                if (!ctx) return;
-                if (vm.deviceTypeChart) vm.deviceTypeChart.destroy();
-
-                var chartCtx = ctx.getContext('2d');
-                var labels = Object.keys(data);
-                var values = Object.values(data);
-                
-                // Beautiful gradient colors for each device type
-                var gradients = [];
-                var colorSets = [
-                    { start: 'rgba(59, 130, 246, 0.9)', end: 'rgba(37, 99, 235, 0.7)', border: '#2563eb' },  // Blue - Soil Sensor
-                    { start: 'rgba(139, 92, 246, 0.9)', end: 'rgba(109, 40, 217, 0.7)', border: '#7c3aed' },  // Purple - Weather Station
-                    { start: 'rgba(20, 184, 166, 0.9)', end: 'rgba(13, 148, 136, 0.7)', border: '#0d9488' },  // Teal - Controller
-                    { start: 'rgba(251, 146, 60, 0.9)', end: 'rgba(234, 88, 12, 0.7)', border: '#ea580c' }    // Orange - Gateway
-                ];
-                
-                for (var i = 0; i < labels.length; i++) {
-                    var gradient = chartCtx.createLinearGradient(0, 0, 300, 0);
-                    gradient.addColorStop(0, colorSets[i % colorSets.length].start);
-                    gradient.addColorStop(1, colorSets[i % colorSets.length].end);
-                    gradients.push(gradient);
-                }
-
-                vm.deviceTypeChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{ 
-                            label: 'Records Count', 
-                            data: values, 
-                            backgroundColor: gradients,
-                            borderColor: colorSets.slice(0, labels.length).map(function(c) { return c.border; }),
-                            borderWidth: 2,
-                            borderRadius: 8,
-                            borderSkipped: false,
-                            barThickness: 28
-                        }]
-                    },
-                    options: {
-                        responsive: true, 
-                        maintainAspectRatio: false,
-                        indexAxis: 'y',
-                        animation: { duration: 800, easing: 'easeOutCubic' },
-                        plugins: { 
-                            legend: { display: false },
-                            tooltip: {
-                                backgroundColor: 'rgba(30, 61, 46, 0.95)',
-                                titleFont: { size: 13, weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                padding: 12,
-                                cornerRadius: 8,
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.raw + ' detection records';
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: { 
-                                beginAtZero: true, 
-                                grid: { color: 'rgba(0, 0, 0, 0.05)', drawBorder: false }, 
-                                ticks: { color: '#6b7280', stepSize: 1, font: { size: 11, weight: '500' } },
-                                border: { display: false }
-                            },
-                            y: { 
-                                grid: { display: false }, 
-                                ticks: { color: '#374151', font: { size: 12, weight: '600' }, padding: 8 },
-                                border: { display: false }
-                            }
-                        }
-                    }
-                });
-            }
-
-            function renderResponseActionsChart(data) {
-                var ctx = document.getElementById('responseActionsChart');
-                if (!ctx) return;
-                if (vm.responseActionsChart) vm.responseActionsChart.destroy();
-
-                var chartCtx = ctx.getContext('2d');
-                
-                // Create elegant gradient colors
-                var greenGradient = chartCtx.createLinearGradient(0, 0, 0, 200);
-                greenGradient.addColorStop(0, '#10b981');
-                greenGradient.addColorStop(1, '#059669');
-                
-                var amberGradient = chartCtx.createLinearGradient(0, 0, 0, 200);
-                amberGradient.addColorStop(0, '#fbbf24');
-                amberGradient.addColorStop(1, '#f59e0b');
-                
-                var redGradient = chartCtx.createLinearGradient(0, 0, 0, 200);
-                redGradient.addColorStop(0, '#f87171');
-                redGradient.addColorStop(1, '#dc2626');
-
-                vm.responseActionsChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['No Action', 'Alert Sent', 'Isolated'],
-                        datasets: [{ 
-                            data: [data['None'], data['Alert Sent'], data['Device Isolated']], 
-                            backgroundColor: [greenGradient, amberGradient, redGradient],
-                            borderColor: ['#059669', '#d97706', '#b91c1c'],
-                            borderWidth: 3,
-                            hoverOffset: 15,
-                            hoverBorderWidth: 4,
-                            spacing: 3
-                        }]
-                    },
-                    options: {
-                        responsive: true, 
-                        maintainAspectRatio: false, 
-                        cutout: '55%',
-                        animation: { 
-                            animateRotate: true, 
-                            animateScale: true,
-                            duration: 1000,
-                            easing: 'easeOutQuart'
-                        },
-                        plugins: { 
-                            legend: { 
-                                position: 'bottom', 
-                                labels: { 
-                                    color: '#374151', 
-                                    padding: 16, 
-                                    usePointStyle: true, 
-                                    pointStyle: 'rectRounded',
-                                    font: { size: 11, weight: '600' }
-                                } 
-                            },
-                            tooltip: {
-                                backgroundColor: 'rgba(30, 61, 46, 0.95)',
-                                titleFont: { size: 13, weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                padding: 12,
-                                cornerRadius: 8,
-                                callbacks: {
-                                    label: function(context) {
-                                        var total = context.dataset.data.reduce(function(a, b) { return a + b; }, 0);
-                                        var percentage = Math.round((context.raw / total) * 100);
-                                        return context.label + ': ' + context.raw + ' (' + percentage + '%)';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            function renderFarmAnomalyChart(data) {
-                var ctx = document.getElementById('farmAnomalyChart');
-                if (!ctx) return;
-                if (vm.farmAnomalyChart) vm.farmAnomalyChart.destroy();
-
-                var chartCtx = ctx.getContext('2d');
-                
-                // Create gradient colors based on severity
-                var barGradients = data.map(function(d) {
-                    var gradient = chartCtx.createLinearGradient(0, 0, 300, 0);
-                    if (d.avgScore >= 0.6) {
-                        gradient.addColorStop(0, 'rgba(248, 113, 113, 0.9)');
-                        gradient.addColorStop(1, 'rgba(185, 28, 28, 0.8)');
-                    } else if (d.avgScore >= 0.3) {
-                        gradient.addColorStop(0, 'rgba(251, 191, 36, 0.9)');
-                        gradient.addColorStop(1, 'rgba(217, 119, 6, 0.8)');
-                    } else {
-                        gradient.addColorStop(0, 'rgba(52, 211, 153, 0.9)');
-                        gradient.addColorStop(1, 'rgba(5, 150, 105, 0.8)');
-                    }
-                    return gradient;
-                });
-
-                var borderColors = data.map(function(d) {
-                    if (d.avgScore >= 0.6) return '#b91c1c';
-                    if (d.avgScore >= 0.3) return '#b45309';
-                    return '#047857';
-                });
-
-                vm.farmAnomalyChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data.map(function(d) { 
-                            var words = d.farm.split(' ');
-                            return words.length > 2 ? words.slice(0, 2).join(' ') + '...' : d.farm;
-                        }),
-                        datasets: [{ 
-                            label: 'Avg Anomaly Score', 
-                            data: data.map(function(d) { return d.avgScore; }), 
-                            backgroundColor: barGradients,
-                            borderColor: borderColors,
-                            borderWidth: 2,
-                            borderRadius: 8,
-                            borderSkipped: false,
-                            barThickness: 24
-                        }]
-                    },
-                    options: {
-                        responsive: true, 
-                        maintainAspectRatio: false,
-                        indexAxis: 'y',
-                        animation: { duration: 900, easing: 'easeOutQuart' },
-                        plugins: { 
-                            legend: { display: false },
-                            tooltip: {
-                                backgroundColor: 'rgba(30, 61, 46, 0.95)',
-                                titleFont: { size: 13, weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                padding: 12,
-                                cornerRadius: 8,
-                                callbacks: {
-                                    title: function(context) {
-                                        return '🌱 ' + data[context[0].dataIndex].farm;
-                                    },
-                                    label: function(context) {
-                                        var score = context.raw;
-                                        var risk = score >= 0.6 ? '🔴 High Risk' : (score >= 0.3 ? '🟠 Medium Risk' : '🟢 Low Risk');
-                                        return ['Score: ' + score.toFixed(3), risk];
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: { 
-                                min: 0, 
-                                max: 1, 
-                                grid: { color: 'rgba(0, 0, 0, 0.05)', drawBorder: false }, 
-                                ticks: { 
-                                    color: '#6b7280', 
-                                    font: { size: 10, weight: '500' },
-                                    callback: function(value) { return value.toFixed(1); }
-                                },
-                                border: { display: false }
-                            },
-                            y: { 
-                                grid: { display: false }, 
-                                ticks: { color: '#374151', font: { size: 11, weight: '600' }, padding: 8 },
-                                border: { display: false }
-                            }
-                        }
-                    }
-                });
-            }
 
             $scope.$on('$destroy', function() {
                 if (vm.devicesChart) vm.devicesChart.destroy();
                 if (vm.predictionChart) vm.predictionChart.destroy();
                 if (vm.recordsChart) vm.recordsChart.destroy();
-                if (vm.deviceTypeChart) vm.deviceTypeChart.destroy();
-                if (vm.responseActionsChart) vm.responseActionsChart.destroy();
-                if (vm.farmAnomalyChart) vm.farmAnomalyChart.destroy();
             });
+        }]);
+
+    // ============================================
+    // HOME CONTROLLER
+    // ============================================
+    
+    angular.module('cropGuardApp')
+        .controller('HomeController', ['$scope', '$location', 'AuthService', 'DataService', function($scope, $location, AuthService, DataService) {
+            var vm = this;
+
+            vm.user = AuthService.getCurrentUser();
+            vm.stats = { totalFarms: 0, totalDevices: 0, activeDevices: 0, recentAlerts: 0, systemHealth: 0 };
+            vm.mapDevices = [];
+            vm.mapEvents = [];
+            vm.recentAlerts = [];
+            vm.recentActivity = [];
+
+            // Navigation functions
+            vm.goToFarms = function() { $location.path('/dashboard/farms'); };
+            vm.goToDevices = function() { $location.path('/dashboard/devices'); };
+            vm.goToRecords = function() { $location.path('/dashboard/records'); };
+            vm.goToGeographic = function() { $location.path('/dashboard/geographic'); };
+            vm.goToAnalytics = function() { $location.path('/dashboard/analytics'); };
+            vm.openEventModal = function(event) { $scope.$emit('openEventModal', event); };
+            vm.viewRecord = function(record) { $location.path('/dashboard/records'); };
+
+            // Load data
+            function loadData() {
+                Promise.all([
+                    DataService.getFarms(),
+                    DataService.getDevices(),
+                    DataService.getRecords(),
+                    DataService.getMapEvents()
+                ])
+                .then(function(results) {
+                    var farms = results[0];
+                    var devices = results[1];
+                    var records = results[2];
+                    var mapEvents = results[3];
+
+                    // Calculate stats
+                    vm.stats.totalFarms = farms.length;
+                    vm.stats.totalDevices = devices.length;
+                    vm.stats.activeDevices = devices.filter(function(d) { return d.is_active; }).length;
+                    
+                    // Get recent alerts (anomalies and suspicious) - sorted by most recent
+                    vm.recentAlerts = records
+                        .filter(function(r) { return r.prediction === 'Anomaly' || r.prediction === 'Suspicious'; })
+                        .sort(function(a, b) { return new Date(b.processed_at) - new Date(a.processed_at); })
+                        .slice(0, 10);
+                    
+                    vm.stats.recentAlerts = vm.recentAlerts.length;
+                    
+                    // Calculate system health (percentage of active devices)
+                    vm.stats.systemHealth = devices.length > 0 ? Math.round((vm.stats.activeDevices / devices.length) * 100) : 100;
+                    
+                    // Convert devices to map format
+                    vm.mapDevices = devices;
+                    vm.mapEvents = mapEvents;
+                    
+                    // Generate device locations summary
+                    vm.deviceLocations = [];
+                    var locationMap = {};
+                    devices.forEach(function(device) {
+                        var key = device.farm_name;
+                        if (!locationMap[key]) {
+                            locationMap[key] = {
+                                farm: device.farm_name,
+                                total: 0,
+                                active: 0,
+                                coordinates: device.baseline_lat && device.baseline_long ? 
+                                    device.baseline_lat.toFixed(2) + '°, ' + device.baseline_long.toFixed(2) + '°' : 'N/A'
+                            };
+                        }
+                        locationMap[key].total++;
+                        if (device.is_active) locationMap[key].active++;
+                    });
+                    vm.deviceLocations = Object.values(locationMap).slice(0, 5);
+                    
+                    // Generate recent activity from records - more detailed
+                    vm.recentActivity = records
+                        .sort(function(a, b) { return new Date(b.processed_at) - new Date(a.processed_at); })
+                        .slice(0, 10)
+                        .map(function(record) {
+                            var activityText = '';
+                            if (record.prediction === 'Anomaly') {
+                                activityText = 'Anomaly detected on ' + record.device_name + ' at ' + record.farm_name;
+                            } else if (record.prediction === 'Suspicious') {
+                                activityText = 'Suspicious activity on ' + record.device_name + ' at ' + record.farm_name;
+                            } else {
+                                activityText = 'Normal operation: ' + record.device_name + ' at ' + record.farm_name;
+                            }
+                            
+                            return {
+                                type: record.prediction.toLowerCase(),
+                                icon: record.prediction === 'Anomaly' ? 'fa-exclamation-circle' : 
+                                      record.prediction === 'Suspicious' ? 'fa-exclamation-triangle' : 'fa-check-circle',
+                                text: activityText,
+                                time: record.processed_at
+                            };
+                        });
+                    
+                    // Apply changes to view
+                    $scope.$apply();
+                })
+                .catch(function(error) {
+                    console.error('Error loading home data:', error);
+                });
+            }
+
+            loadData();
         }]);
 
     // ============================================
@@ -1142,30 +907,70 @@
     // ============================================
     
     angular.module('cropGuardApp')
-        .controller('GeographicController', ['$scope', 'DataService', function($scope, DataService) {
+        .controller('GeographicController', ['$scope', '$location', 'DataService', function($scope, $location, DataService) {
             var vm = this;
 
-            vm.mapEvents = [];
+            vm.devices = [];
             vm.isLoading = true;
             vm.stats = { normal: 0, suspicious: 0, anomaly: 0 };
 
-            vm.openEventModal = function(event) { $scope.$emit('openEventModal', event); };
+            vm.openDeviceModal = function(device) {
+                // Navigate to device detail page
+                $location.path('/dashboard/devices/' + device.id);
+            };
 
-            // Load map events
-            DataService.getMapEvents().then(function(events) {
-                vm.mapEvents = events;
-                
-                // Calculate stats
-                events.forEach(function(event) {
-                    if (event.prediction === 'Normal') vm.stats.normal++;
-                    else if (event.prediction === 'Suspicious') vm.stats.suspicious++;
-                    else if (event.prediction === 'Anomaly') vm.stats.anomaly++;
-                });
-            }).finally(function() { vm.isLoading = false; });
+            // Refresh locations
+            vm.refreshLocations = function() {
+                vm.isLoading = true;
+                loadDevices();
+            };
+
+            // Clear all markers
+            vm.clearAllMarkers = function() {
+                $scope.$broadcast('clearMapMarkers');
+            };
+
+            vm.onClearMarkers = function() {
+                // Called when markers are cleared from the map directive
+            };
+
+            vm.onRefresh = function() {
+                vm.refreshLocations();
+            };
+
+            // Get device status based on latest record
+            vm.getDeviceStatus = function(device) {
+                // For now, use is_active to determine status
+                // In a real app, you'd check the latest ML record for this device
+                if (!device.is_active) return 'Anomaly';
+                // You could enhance this by checking recent records
+                return 'Normal';
+            };
+
+            // Load devices for map
+            function loadDevices() {
+                DataService.getDevices().then(function(devices) {
+                    vm.devices = devices;
+                    
+                    // Reset stats
+                    vm.stats = { normal: 0, suspicious: 0, anomaly: 0 };
+                    
+                    // Calculate stats based on device status
+                    devices.forEach(function(device) {
+                        var status = vm.getDeviceStatus(device);
+                        if (status === 'Normal') vm.stats.normal++;
+                        else if (status === 'Suspicious') vm.stats.suspicious++;
+                        else if (status === 'Anomaly') vm.stats.anomaly++;
+                    });
+                }).finally(function() { vm.isLoading = false; });
+            }
+
+            // Initial load
+            loadDevices();
         }]);
 
     // ============================================
-    // INDIA MAP DIRECTIVE
+    // INDIA MAP DIRECTIVE (SVG-based - for analytics preview)
     // ============================================
     
     angular.module('cropGuardApp')
@@ -1182,123 +987,53 @@
                 '</filter>' +
                 '</defs>' +
                 '<g class="india-country" filter="url(#mapShadow)">' +
-                // Main India outline - traced from reference map
                 '<path class="india-main" fill="url(#mapGradient)" stroke="#c9a227" stroke-width="2" d="' +
-                // Starting from J&K (northwest) - the complex northern border
                 'M95,55 L88,48 L82,52 L78,45 L85,38 L95,35 L108,32 L118,38 L125,32 L135,28 ' +
                 'L148,25 L158,28 L168,22 L180,25 L192,20 L205,25 L215,22 L225,28 ' +
-                // Himachal Pradesh region
                 'L238,25 L248,30 L258,28 L268,32 L275,28 ' +
-                // Uttarakhand - Nepal border
                 'L285,32 L298,30 L312,35 L328,32 L342,38 L358,35 L372,40 L385,38 ' +
-                // Sikkim and entering Northeast
                 'L395,42 L402,38 L412,42 L420,40 ' +
-                // Arunachal Pradesh - easternmost extension
                 'L432,38 L445,42 L458,48 L468,55 L475,65 L480,78 L478,92 ' +
-                // Nagaland
                 'L482,105 L478,118 L475,130 ' +
-                // Manipur
                 'L480,142 L475,155 L470,168 ' +
-                // Mizoram - southern NE
                 'L465,180 L458,192 L448,202 L438,210 ' +
-                // Tripura and Bangladesh border indent
                 'L425,205 L412,200 L398,198 L385,205 L378,218 L382,232 ' +
-                // West Bengal coast
                 'L385,248 L380,265 L372,282 L362,298 ' +
-                // Odisha coast - curving
                 'L348,315 L332,330 L315,342 L298,352 ' +
-                // Andhra Pradesh coast
                 'L282,365 L268,380 L258,398 L252,418 ' +
-                // Tamil Nadu - approaching southern tip
                 'L250,438 L252,458 L255,475 L252,490 ' +
-                // Kanyakumari - the southern tip
                 'L245,502 L235,512 L222,518 L208,515 L198,508 L192,498 ' +
-                // Kerala coast - going north along west
                 'L185,482 L178,462 L172,442 L168,422 L165,402 ' +
-                // Karnataka coast
                 'L162,382 L158,362 L152,342 L145,322 ' +
-                // Goa
                 'L140,305 L138,288 ' +
-                // Maharashtra coast
                 'L135,272 L130,255 L122,238 L115,222 L108,205 ' +
-                // Gujarat - Gulf of Khambhat
                 'L100,188 L92,172 L85,158 ' +
-                // Saurashtra Peninsula (Kathiawar) - the distinctive bulge
                 'L75,152 L65,155 L55,162 L48,172 L45,185 L52,198 L65,205 L78,202 L88,192 L92,178 ' +
-                // Gulf of Kutch
                 'L85,168 L72,172 L58,178 L48,188 ' +
-                // Kutch Peninsula - the distinctive northwestern extension
                 'L35,182 L25,175 L18,162 L15,148 L18,135 L28,125 L42,118 L58,115 ' +
-                // Rajasthan - Pakistan border going north
                 'L72,112 L82,105 L88,95 L92,82 L95,68 L95,55 Z"/>' +
-                // State boundaries (internal lines)
                 '<g class="state-borders" stroke="#c9a227" stroke-width="0.8" fill="none" opacity="0.4">' +
-                // J&K - HP - Punjab region
                 '<path d="M168,22 C180,45 195,55 215,62 L235,72"/>' +
-                // Haryana - Delhi
                 '<path d="M215,62 L228,88 L242,108"/>' +
-                // Rajasthan (large state)
                 '<path d="M92,95 Q130,115 155,165 Q145,218 130,272"/>' +
-                // Uttar Pradesh
                 '<path d="M242,108 L295,115 L355,125 L395,140"/>' +
-                // Madhya Pradesh - Chhattisgarh
                 '<path d="M130,272 L185,255 L255,252 L325,268 L372,292"/>' +
-                // Gujarat - Maharashtra
-                '<path d="M108,205 L130,235 L135,268"/>' +
-                // Maharashtra - Karnataka
-                '<path d="M138,295 L185,308 L238,322 L282,340"/>' +
-                // Andhra - Telangana
-                '<path d="M282,340 L325,358 L358,375"/>' +
-                // Karnataka - TN - Kerala
-                '<path d="M178,395 L218,408 L258,428"/>' +
-                '<path d="M192,472 L218,478 L245,492"/>' +
-                // Bihar - Jharkhand
-                '<path d="M372,142 L385,185 L390,228"/>' +
-                // West Bengal - Odisha
-                '<path d="M362,235 L372,275 L365,312"/>' +
-                // Northeast states
-                '<path d="M425,55 L448,88 L472,118"/>' +
-                '<path d="M455,95 L475,108 L482,125"/>' +
-                '<path d="M448,145 L465,158 L475,175"/>' +
                 '</g>' +
-                // Andaman Islands
                 '<g class="andaman">' +
                 '<ellipse cx="468" cy="362" rx="5" ry="15" fill="#3d6b47" stroke="#c9a227" stroke-width="0.8"/>' +
                 '<ellipse cx="472" cy="395" rx="4" ry="12" fill="#3d6b47" stroke="#c9a227" stroke-width="0.8"/>' +
-                '<ellipse cx="475" cy="425" rx="3.5" ry="10" fill="#3d6b47" stroke="#c9a227" stroke-width="0.8"/>' +
                 '</g>' +
-                // Nicobar Islands
-                '<g class="nicobar">' +
-                '<ellipse cx="480" cy="455" rx="3" ry="7" fill="#3d6b47" stroke="#c9a227" stroke-width="0.6"/>' +
-                '<ellipse cx="485" cy="478" rx="2.5" ry="5" fill="#3d6b47" stroke="#c9a227" stroke-width="0.6"/>' +
-                '</g>' +
-                // Lakshadweep Islands
-                '<g class="lakshadweep">' +
-                '<circle cx="115" cy="408" r="2.5" fill="#3d6b47" stroke="#c9a227" stroke-width="0.5"/>' +
-                '<circle cx="108" cy="428" r="2" fill="#3d6b47" stroke="#c9a227" stroke-width="0.5"/>' +
-                '<circle cx="102" cy="448" r="1.8" fill="#3d6b47" stroke="#c9a227" stroke-width="0.5"/>' +
-                '<circle cx="98" cy="465" r="1.5" fill="#3d6b47" stroke="#c9a227" stroke-width="0.5"/>' +
-                '</g>' +
-                // Sri Lanka
-                '<path class="srilanka" fill="#2d5237" stroke="#c9a227" stroke-width="0.6" opacity="0.25" d="' +
-                'M218,555 Q235,548 242,560 Q245,578 235,590 Q222,595 212,585 Q208,570 218,555 Z"/>' +
                 '</g>' +
                 '</svg>';
 
             return {
                 restrict: 'E',
-                scope: { events: '=', onEventClick: '&', fullView: '=' },
+                scope: { events: '=', devices: '=', onEventClick: '&', onDeviceClick: '&', fullView: '=' },
                 template: '<div class="india-map-wrapper" ng-class="{\'full-view\': fullView}">' +
                     '<div class="india-map-container" id="india-map-container">' +
                         indiaSvg +
-                        '<div class="map-markers" ng-if="events && events.length">' +
-                            '<div ng-repeat="event in events" class="map-marker" ng-class="getMarkerClass(event)" ng-style="getMarkerPosition(event)" ng-click="handleEventClick(event)" ng-mouseenter="showTooltip(event, $event)" ng-mouseleave="hideTooltip()" title="{{event.farm_name}}"></div>' +
-                        '</div>' +
-                        '<div class="map-tooltip" ng-class="{\'visible\': tooltipVisible}" ng-style="tooltipPosition">' +
-                            '<div class="tooltip-header"><span class="tooltip-id">{{tooltipEvent.id}}</span><span class="status-badge" ng-class="getMarkerClass(tooltipEvent)">{{tooltipEvent.prediction}}</span></div>' +
-                            '<div class="tooltip-row"><span class="label">Asset Type</span><span class="value">{{tooltipEvent.asset_type}}</span></div>' +
-                            '<div class="tooltip-row"><span class="label">Anomaly Score</span><span class="value">{{tooltipEvent.anomaly_score | number:2}}</span></div>' +
-                            '<div class="tooltip-row"><span class="label">Farm</span><span class="value">{{tooltipEvent.farm_name}}</span></div>' +
+                        '<div class="map-markers" ng-if="mapData && mapData.length">' +
+                            '<div ng-repeat="item in mapData" class="map-marker" ng-class="getMarkerClass(item)" ng-style="getMarkerPosition(item)" ng-click="handleClick(item)" title="{{item.farm_name || item.name}}"></div>' +
                         '</div>' +
                     '</div>' +
                     '<div class="map-legend">' +
@@ -1308,32 +1043,61 @@
                     '</div>' +
                 '</div>',
                 link: function(scope) {
-                    // Map config - India coordinates (viewBox: 0 0 520 600)
-                    // Real coords: Lat 6-38°N, Long 66-98°E
-                    var mapConfig = { 
-                        minLat: 5.0,
-                        maxLat: 38.0,
-                        minLong: 65.0,
-                        maxLong: 99.0
-                    };
-                    scope.tooltipVisible = false;
-                    scope.tooltipEvent = {};
-                    scope.tooltipPosition = {};
+                    var mapConfig = { minLat: 5.0, maxLat: 38.0, minLong: 65.0, maxLong: 99.0 };
 
-                    scope.getMarkerPosition = function(event) {
-                        // Convert lat/long to percentage position on map
-                        var xPercent = (event.longitude - mapConfig.minLong) / (mapConfig.maxLong - mapConfig.minLong);
+                    // Convert devices or events to map data format
+                    scope.$watch('[devices, events]', function(newVal) {
+                        var devices = newVal[0];
+                        var events = newVal[1];
+                        
+                        if (devices && devices.length) {
+                            // Convert devices to map format
+                            scope.mapData = devices.map(function(device) {
+                                var status = device.is_active ? 'Normal' : 'Anomaly';
+                                return {
+                                    id: device.id,
+                                    name: device.name,
+                                    latitude: device.baseline_lat || device.latitude,
+                                    longitude: device.baseline_long || device.longitude,
+                                    prediction: status,
+                                    farm_name: device.farm_name,
+                                    type: 'device',
+                                    device: device
+                                };
+                            }).filter(function(item) {
+                                return item.latitude && item.longitude;
+                            });
+                        } else if (events && events.length) {
+                            // Use events as-is
+                            scope.mapData = events.map(function(event) {
+                                return {
+                                    id: event.id || event.event_id,
+                                    latitude: event.latitude,
+                                    longitude: event.longitude,
+                                    prediction: event.prediction,
+                                    farm_name: event.farm_name,
+                                    type: 'event',
+                                    event: event
+                                };
+                            });
+                        } else {
+                            scope.mapData = [];
+                        }
+                    }, true);
+
+                    scope.getMarkerPosition = function(item) {
+                        if (!item || !item.latitude || !item.longitude) return {};
+                        var xPercent = (item.longitude - mapConfig.minLong) / (mapConfig.maxLong - mapConfig.minLong);
                         var x = 2 + (xPercent * 94);
-                        
-                        var yPercent = (mapConfig.maxLat - event.latitude) / (mapConfig.maxLat - mapConfig.minLat);
+                        var yPercent = (mapConfig.maxLat - item.latitude) / (mapConfig.maxLat - mapConfig.minLat);
                         var y = 4 + (yPercent * 90);
-                        
                         return { left: x + '%', top: y + '%' };
                     };
 
-                    scope.getMarkerClass = function(event) {
-                        if (!event) return '';
-                        switch (event.prediction) { 
+                    scope.getMarkerClass = function(item) {
+                        if (!item) return '';
+                        var prediction = item.prediction;
+                        switch (prediction) { 
                             case 'Normal': return 'normal badge-normal'; 
                             case 'Suspicious': return 'suspicious badge-suspicious'; 
                             case 'Anomaly': return 'anomaly badge-anomaly'; 
@@ -1341,23 +1105,303 @@
                         }
                     };
 
-                    scope.showTooltip = function(event, $event) {
-                        scope.tooltipEvent = event;
-                        scope.tooltipVisible = true;
-                        var container = document.getElementById('india-map-container');
-                        if (container) {
-                            var rect = container.getBoundingClientRect();
-                            var tooltipX = $event.clientX - rect.left + 15;
-                            var tooltipY = $event.clientY - rect.top - 10;
-                            // Keep tooltip within container bounds
-                            if (tooltipX + 180 > rect.width) tooltipX = $event.clientX - rect.left - 190;
-                            if (tooltipY < 0) tooltipY = 10;
-                            scope.tooltipPosition = { left: tooltipX + 'px', top: tooltipY + 'px' };
+                    scope.handleClick = function(item) {
+                        if (item.type === 'device' && scope.onDeviceClick) {
+                            scope.onDeviceClick({ device: item.device });
+                        } else if (item.type === 'event' && scope.onEventClick) {
+                            scope.onEventClick({ event: item.event });
+                        } else if (scope.onEventClick) {
+                            // Fallback for backward compatibility
+                            scope.onEventClick({ event: item });
                         }
                     };
+                }
+            };
+        }]);
 
-                    scope.hideTooltip = function() { scope.tooltipVisible = false; };
-                    scope.handleEventClick = function(event) { if (scope.onEventClick) scope.onEventClick({ event: event }); };
+    // ============================================
+    // LEAFLET INDIA MAP DIRECTIVE (OpenStreetMap-based)
+    // ============================================
+    
+    angular.module('cropGuardApp')
+        .directive('leafletIndiaMap', ['$timeout', function($timeout) {
+            return {
+                restrict: 'E',
+                scope: { 
+                    devices: '=', 
+                    onDeviceClick: '&',
+                    onClearMarkers: '&',
+                    onRefresh: '&'
+                },
+                template: '<div class="leaflet-map-wrapper">' +
+                    '<div id="leaflet-india-map" class="leaflet-map-container"></div>' +
+                    '<div class="map-loading" ng-if="!mapReady">' +
+                        '<div class="loading-spinner"></div>' +
+                        '<span>Loading map...</span>' +
+                    '</div>' +
+                '</div>',
+                link: function(scope, element, attrs) {
+                    var map = null;
+                    var markers = [];
+                    var hoverPopup = null;
+                    var hoverTimeout = null;
+                    scope.mapReady = false;
+
+                    // Get device status
+                    function getDeviceStatus(device) {
+                        if (!device.is_active) return 'Anomaly';
+                        return 'Normal';
+                    }
+
+                    // Get marker color based on device status
+                    function getMarkerColor(status) {
+                        switch(status) {
+                            case 'Normal': return '#2e7d32';
+                            case 'normal': return '#2e7d32';
+                            case 'Suspicious': return '#ed6c02';
+                            case 'suspicious': return '#ed6c02';
+                            case 'Anomaly': return '#d32f2f';
+                            case 'anomaly': return '#d32f2f';
+                            default: return '#2e7d32';
+                        }
+                    }
+
+                    // Create custom marker icon
+                    function createMarkerIcon(color) {
+                        return L.divIcon({
+                            className: 'custom-leaflet-marker',
+                            html: '<div class="marker-pin" style="background-color: ' + color + ';"></div>' +
+                                  '<div class="marker-pulse" style="background-color: ' + color + ';"></div>',
+                            iconSize: [30, 30],
+                            iconAnchor: [15, 30], // Anchor at bottom center of icon (where marker touches map)
+                            popupAnchor: [0, -30] // Position popup 30px above marker anchor point (just above marker)
+                        });
+                    }
+
+                    // Clear all markers from map
+                    function clearMarkers() {
+                        // Clear any pending hover timeout
+                        if (hoverTimeout) {
+                            clearTimeout(hoverTimeout);
+                            hoverTimeout = null;
+                        }
+                        
+                        markers.forEach(function(marker) {
+                            map.removeLayer(marker);
+                        });
+                        markers = [];
+                        if (hoverPopup) {
+                            map.closePopup(hoverPopup);
+                            hoverPopup = null;
+                        }
+                    }
+
+                    // Add markers to map
+                    function addMarkers(devices) {
+                        if (!map || !devices || !devices.length) return;
+                        
+                        clearMarkers();
+
+                        devices.forEach(function(device) {
+                            var status = getDeviceStatus(device);
+                            var color = getMarkerColor(status);
+                            var icon = createMarkerIcon(color);
+                            
+                            var lat = device.baseline_lat || device.latitude;
+                            var lng = device.baseline_long || device.longitude;
+                            
+                            if (!lat || !lng) return; // Skip devices without coordinates
+                            
+                            // Create simple hover popup (short version)
+                            var hoverPopupContent = '<div class="leaflet-popup-content-custom hover-popup">' +
+                                '<div class="popup-header-compact">' +
+                                    '<strong>' + device.name + '</strong>' +
+                                    '<span class="popup-status ' + status.toLowerCase() + '">' + status + '</span>' +
+                                '</div>' +
+                                '<div class="popup-body-compact">' +
+                                    '<div class="popup-row-compact">' + device.type + ' • ' + device.farm_name + '</div>' +
+                                '</div>' +
+                            '</div>';
+
+                            // Create marker with hover popup
+                            var marker = L.marker([lat, lng], { icon: icon })
+                                .addTo(map)
+                                .bindPopup(hoverPopupContent, { 
+                                    className: 'custom-popup hover-popup-wrapper', 
+                                    closeOnClick: false, 
+                                    autoClose: true, // Allow auto-close
+                                    closeButton: false,
+                                    autoPan: false // Don't pan map when popup opens
+                                    // popupAnchor from icon definition handles positioning
+                                });
+                            
+                            // Show popup on hover - keep it open until mouse leaves both marker and popup
+                            marker.on('mouseover', function() {
+                                // Clear any pending close timeout
+                                if (hoverTimeout) {
+                                    clearTimeout(hoverTimeout);
+                                    hoverTimeout = null;
+                                }
+                                
+                                marker.openPopup();
+                                hoverPopup = marker.getPopup();
+                                
+                                // Ensure popup is positioned correctly above marker
+                                $timeout(function() {
+                                    var popup = marker.getPopup();
+                                    if (popup && popup.isOpen()) {
+                                        // Force Leaflet to recalculate and update popup position
+                                        popup.update();
+                                        
+                                        // Add hover handlers to popup element to keep it open
+                                        var popupElement = popup.getElement();
+                                        if (popupElement) {
+                                            // Keep popup open when hovering over it
+                                            var popupMouseEnter = function() {
+                                                if (hoverTimeout) {
+                                                    clearTimeout(hoverTimeout);
+                                                    hoverTimeout = null;
+                                                }
+                                            };
+                                            
+                                            var popupMouseLeave = function() {
+                                                hoverTimeout = setTimeout(function() {
+                                                    marker.closePopup();
+                                                    hoverPopup = null;
+                                                }, 150);
+                                            };
+                                            
+                                            // Remove old listeners if any
+                                            popupElement.removeEventListener('mouseenter', popupMouseEnter);
+                                            popupElement.removeEventListener('mouseleave', popupMouseLeave);
+                                            
+                                            // Add new listeners
+                                            popupElement.addEventListener('mouseenter', popupMouseEnter);
+                                            popupElement.addEventListener('mouseleave', popupMouseLeave);
+                                        }
+                                    }
+                                }, 10);
+                            });
+
+                            marker.on('mouseout', function() {
+                                // Don't close immediately - wait a bit in case mouse is moving to popup
+                                hoverTimeout = setTimeout(function() {
+                                    marker.closePopup();
+                                    hoverPopup = null;
+                                }, 150);
+                            });
+                            
+                            // On click, scroll to device details section
+                            marker.on('click', function() {
+                                // Close hover popup
+                                marker.closePopup();
+                                
+                                // Scroll to device details section
+                                var deviceDetailsSection = document.querySelector('.geo-events-section');
+                                if (deviceDetailsSection) {
+                                    var deviceCard = document.querySelector('[data-device-id="' + device.id + '"]');
+                                    if (deviceCard) {
+                                        // Scroll to specific device card
+                                        deviceCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                        // Highlight the card briefly
+                                        deviceCard.style.transition = 'all 0.3s ease';
+                                        deviceCard.style.transform = 'scale(1.05)';
+                                        deviceCard.style.boxShadow = '0 8px 24px rgba(184, 134, 11, 0.4)';
+                                        setTimeout(function() {
+                                            deviceCard.style.transform = '';
+                                            deviceCard.style.boxShadow = '';
+                                        }, 2000);
+                                    } else {
+                                        // Scroll to section if card not found
+                                        deviceDetailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }
+                                
+                                // Also trigger the device click handler
+                                if (scope.onDeviceClick) {
+                                    scope.$apply(function() {
+                                        scope.onDeviceClick({ device: device });
+                                    });
+                                }
+                            });
+
+                            markers.push(marker);
+                        });
+
+                        // Fit bounds to show all markers if there are any
+                        if (markers.length > 0) {
+                            var group = new L.featureGroup(markers);
+                            map.fitBounds(group.getBounds().pad(0.1));
+                        }
+                    }
+
+                    // Initialize map
+                    function initMap() {
+                        $timeout(function() {
+                            try {
+                                // Create map centered on India
+                                map = L.map('leaflet-india-map', {
+                                    center: [20.5937, 78.9629],
+                                    zoom: 5,
+                                    zoomControl: true,
+                                    scrollWheelZoom: true
+                                });
+
+                                // Add OpenStreetMap tiles with custom styling (no attribution)
+                                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                    attribution: '', // Remove attribution
+                                    maxZoom: 18,
+                                    minZoom: 4
+                                }).addTo(map);
+
+                                // Hide Leaflet attribution control
+                                map.attributionControl.setPrefix('');
+
+                                scope.mapReady = true;
+
+                                // Load initial markers after map is ready
+                                $timeout(function() {
+                                    if (scope.devices && scope.devices.length) {
+                                        addMarkers(scope.devices);
+                                    }
+                                }, 300);
+
+                            } catch(error) {
+                                console.error('Error initializing Leaflet map:', error);
+                            }
+                        }, 100);
+                    }
+
+                    // Watch for devices changes
+                    scope.$watch('devices', function(newVal, oldVal) {
+                        if (map) {
+                            if (newVal && newVal.length) {
+                                addMarkers(newVal);
+                            } else {
+                                // Clear markers if devices array is empty
+                                clearMarkers();
+                            }
+                        }
+                    }, true);
+
+                    // Listen for clear markers event
+                    scope.$on('clearMapMarkers', function() {
+                        clearMarkers();
+                        if (scope.onClearMarkers) {
+                            scope.onClearMarkers();
+                        }
+                    });
+
+                    // Initialize map when directive loads
+                    initMap();
+
+                    // Cleanup on destroy
+                    scope.$on('$destroy', function() {
+                        if (map) {
+                            map.remove();
+                            map = null;
+                        }
+                    });
                 }
             };
         }]);
