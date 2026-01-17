@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cropGuardApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropGuard - Cyber-Resilient Smart Agriculture</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body ng-controller="MainController">
+    
+    <!-- Main View -->
+    <div ng-view></div>
+
+    <!-- ============================================ -->
+    <!-- INLINE TEMPLATES -->
+    <!-- ============================================ -->
+
+    <!-- Landing Page Template -->
+    <script type="text/ng-template" id="landing.html">
+        <div class="landing-page">
+            <!-- Navigation -->
+            <nav class="landing-nav">
+                <div class="landing-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="logo-text">Crop<span>Guard</span></span>
+                </div>
+                <div class="landing-nav-actions">
+                    <button class="btn btn-secondary" ng-click="vm.goToLogin()">Login</button>
+                    <button class="btn btn-primary" ng-click="vm.goToLogin()">Sign Up</button>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Cyber-Resilient Infrastructure</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Protecting <span class="highlight">Smart Agriculture</span><br>
+                        from Cyber Threats
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Modern agriculture increasingly relies on connected sensors, gateways, irrigation controllers, 
+                        and automated systems. While these technologies improve efficiency and yield, they also introduce 
+                        cyber risks such as device hijacking, data spoofing, unauthorized access, and operational disruption.
+                    </p>
+                    
+                    <p class="hero-description">
+                        CropGuard is a monitoring and analytics platform that continuously observes agricultural 
+                        infrastructure, analyzes events using machine learning, and highlights anomalous or risky behavior. 
+                        It provides farm-level visibility, device-level tracking, and geographic threat awareness across India.
+                    </p>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" ng-click="vm.goToLogin()">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                        <button class="btn btn-outline btn-lg" ng-click="vm.goToLogin()">
+                            <i class="fas fa-user-plus"></i>
+                            Sign Up
+                        </button>
+                    </div>
+
+                    <!-- Feature Cards -->
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h4>Farm Monitoring</h4>
+                            <p>Track all your agricultural locations with real-time device status and health metrics.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>ML-Based Detection</h4>
+                            <p>Advanced machine learning algorithms identify anomalies and potential security threats.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h4>Geographic Insights</h4>
+                            <p>Visualize threat distribution across India with interactive maps and analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="landing-footer">
+                <p>
+                    <i class="fas fa-flask"></i>
+                    Hackathon prototype — all events and analytics are simulated.
+                </p>
+            </footer>
+        </div>
+    </script>
+
+    <!-- Login Page Template -->
+    <script type="text/ng-template" id="login.html">
+        <div class="login-page">
+            <div class="login-container">
+                <div class="login-card">
+                    <!-- Header -->
+                    <div class="login-header">
+                        <div class="login-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span class="logo-text">Crop<span>Guard</span></span>
+                        </div>
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to access your dashboard</p>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form ng-submit="vm.login()">
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" 
+                                   class="form-input" 
+                                   placeholder="Enter your email"
+                                   ng-model="vm.email"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" 
+                                   class="form-input" 
+                                   placeholder="Enter your password"
+                                   ng-model="vm.password"
+                                   required>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="form-error" ng-if="vm.error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>{{vm.error}}</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                                class="btn btn-primary login-btn" 
+                                ng-disabled="vm.isLoading">
+                            <span ng-if="!vm.isLoading">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </span>
+                            <span ng-if="vm.isLoading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Signing in...
+                            </span>
+                        </button>
+                    </form>
+
+                    <!-- Footer -->
+                    <div class="login-footer">
+                        <a ng-click="vm.goBack()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Dashboard Layout Template -->
+    <script type="text/ng-template" id="dashboard.html">
+        <div class="dashboard-layout">
+            <!-- Left Sidebar -->
+            <aside class="sidebar" ng-class="{'collapsed': vm.sidebarCollapsed}">
+                <!-- Logo - Clickable to Analytics -->
+                <div class="sidebar-header" ng-click="vm.navigateTo('/dashboard/analytics')">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="logo-text">Crop<span>Guard</span></span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <span class="nav-section-title">Main Menu</span>
+                        
+                        <div class="nav-item" 
+                             ng-repeat="item in vm.navItems"
+                             ng-class="{'active': vm.isActive(item.id)}"
+                             ng-click="vm.navigateTo(item.route)">
+                            <i class="fas {{item.icon}}"></i>
+                            <span>{{item.label}}</span>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Toggle Button -->
+                <div class="sidebar-toggle">
+                    <button class="toggle-btn" ng-click="vm.toggleSidebar()">
+                        <i class="fas" ng-class="vm.sidebarCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+                        <span>Collapse</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Navbar -->
+                <header class="top-navbar">
+                    <h1 class="navbar-title">{{vm.pageTitle}}</h1>
+                    
+                    <div class="navbar-actions">
+                        <!-- User Dropdown -->
+                        <div class="user-dropdown" ng-class="{'open': vm.dropdownOpen}">
+                            <div class="user-btn" ng-click="vm.toggleDropdown($event)">
+                                <div class="user-avatar">
+                                    {{vm.user.name.charAt(0)}}
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name">{{vm.user.name}}</span>
+                                    <span class="user-role">{{vm.user.role}}</span>
+                                </div>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </div>
+                            
+                            <div class="dropdown-menu">
+                                <div class="dropdown-header">
+                                    <div class="name">{{vm.user.name}}</div>
+                                    <div class="email">{{vm.user.email}}</div>
+                                </div>
+                                <div class="dropdown-item" ng-click="vm.goToAccount()">
+                                    <i class="fas fa-user"></i>
+                                    <span>Account Details</span>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item danger" ng-click="vm.requestLogout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Page Content -->
+                <div class="page-content">
+                    <!-- Analytics Page -->
+                    <div ng-if="vm.currentPage === 'analytics'" ng-controller="AnalyticsController as analytics">
+                        <!-- Analytics Page Content -->
+                        <div class="analytics-page">
+                            <!-- Header with Farm Selector -->
+                            <div class="analytics-header">
+                                <div class="farm-selector">
+                                    <label>View Analytics For:</label>
+                                    <select ng-model="analytics.selectedFarmId" ng-change="analytics.onFarmChange()">
+                                        <option value="">All Farms</option>
+                                        <option ng-repeat="farm in analytics.farms" value="{{farm.id}}">
+                                            {{farm.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Stats Tile - Clickable to Farms -->
+                            <div class="stats-tile" ng-click="analytics.goToFarms()">
+                                <div class="stats-tile-header">
+                                    <h4><i class="fas fa-tachometer-alt"></i> System Overview</h4>
+                                    <span class="view-link">View Farms <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                                <div class="stats-tile-content">
+                                    <div class="stat-item">
+                                        <div class="stat-item-icon farms">
+                                            <i class="fas fa-seedling"></i>
+                                        </div>
+                                        <div class="stat-item-value">{{analytics.stats.totalFarms}}</div>
+                                        <div class="stat-item-label">Total Farms</div>
+                                    </div>
+                                    
+                                    <div class="stat-item">
+                                        <div class="stat-item-icon devices">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <div class="stat-item-value">{{analytics.stats.totalDevices}}</div>
+                                        <div class="stat-item-label">Active Devices</div>
+                                    </div>
+                                    
+                                    <div class="stat-item">
+                                        <div class="stat-item-icon anomalies">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="stat-item-value">{{analytics.stats.anomalyCount}}</div>
+                                        <div class="stat-item-label">Anomalies Detected</div>
+                                    </div>
+                                    
+                                    <div class="stat-item">
+                                        <div class="stat-item-icon confidence">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="stat-item-value">{{analytics.stats.avgConfidence}}%</div>
+                                        <div class="stat-item-label">Avg. Confidence</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Map Tile - Geographic Threat Distribution (Clickable) -->
+                            <div class="map-tile" ng-click="analytics.goToGeographic()">
+                                <div class="map-tile-header">
+                                    <h4><i class="fas fa-map-marked-alt"></i> Geographic Threat Distribution - India</h4>
+                                    <span class="view-link">View Full Map <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                                <div class="map-tile-content">
+                                    <india-map 
+                                        events="analytics.mapEvents" 
+                                        on-event-click="analytics.openEventModal(event)">
+                                    </india-map>
+                                </div>
+                            </div>
+
+                            <!-- Loading State -->
+                            <div class="loading" ng-if="analytics.isLoading">
+                                <div class="loading-spinner"></div>
+                            </div>
+
+                            <!-- Charts Grid -->
+                            <div class="charts-grid" ng-if="!analytics.isLoading">
+                                <!-- Devices Over Time -->
+                                <div class="chart-card">
+                                    <h4><i class="fas fa-microchip"></i> Devices Over Time</h4>
+                                    <div class="chart-container">
+                                        <canvas id="devicesChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Prediction Distribution -->
+                                <div class="chart-card">
+                                    <h4><i class="fas fa-chart-pie"></i> Prediction Distribution</h4>
+                                    <div class="chart-container">
+                                        <canvas id="predictionChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Records Anomaly Score by Event -->
+                                <div class="chart-card">
+                                    <h4><i class="fas fa-clipboard-list"></i> Records Anomaly Score by Event</h4>
+                                    <div class="chart-container">
+                                        <canvas id="recordsChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Records by Device Type -->
+                                <div class="chart-card">
+                                    <h4><i class="fas fa-server"></i> Records by Device Type</h4>
+                                    <div class="chart-container">
+                                        <canvas id="deviceTypeChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Response Actions Distribution -->
+                                <div class="chart-card">
+                                    <h4><i class="fas fa-shield-alt"></i> Response Actions</h4>
+                                    <div class="chart-container">
+                                        <canvas id="responseActionsChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Anomaly Score by Farm -->
+                                <div class="chart-card">
+                                    <h4><i class="fas fa-seedling"></i> Avg Anomaly Score by Farm</h4>
+                                    <div class="chart-container">
+                                        <canvas id="farmAnomalyChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Farms Page -->
+                    <div ng-if="vm.currentPage === 'farms' || vm.currentPage === 'farm-detail'" ng-controller="FarmsController as farms">
+                        <!-- Farms Page Content -->
+                        <div class="farms-page">
+                            <!-- Farm List View -->
+                            <div ng-if="!farms.isDetailView">
+                                <!-- Page Header -->
+                                <div class="page-header">
+                                    <h2>Registered Farms</h2>
+                                    <div class="view-toggle">
+                                        <button ng-class="{'active': farms.viewMode === 'table'}" ng-click="farms.setViewMode('table')">
+                                            <i class="fas fa-list"></i>
+                                        </button>
+                                        <button ng-class="{'active': farms.viewMode === 'card'}" ng-click="farms.setViewMode('card')">
+                                            <i class="fas fa-th-large"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Loading State -->
+                                <div class="loading" ng-if="farms.isLoading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+
+                                <!-- Table View -->
+                                <div class="card" ng-if="!farms.isLoading && farms.viewMode === 'table'">
+                                    <div class="table-container">
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sortable" ng-class="{'sorted': farms.sortField === 'name'}" ng-click="farms.sortBy('name')">
+                                                        Farm Name
+                                                        <i class="fas sort-icon" ng-class="farms.sortReverse ? 'fa-sort-down' : 'fa-sort-up'"></i>
+                                                    </th>
+                                                    <th>Area (acres)</th>
+                                                    <th>Latitude</th>
+                                                    <th>Longitude</th>
+                                                    <th>Status</th>
+                                                    <th>Created</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="farm in farms.farms | orderBy:farms.sortField:farms.sortReverse" 
+                                                    class="clickable"
+                                                    ng-click="farms.viewFarm(farm)">
+                                                    <td>
+                                                        <strong>{{farm.name}}</strong>
+                                                    </td>
+                                                    <td>{{farm.area | number:1}}</td>
+                                                    <td>{{farm.latitude | number:4}}</td>
+                                                    <td>{{farm.longitude | number:4}}</td>
+                                                    <td>
+                                                        <span class="status-badge" ng-class="farm.is_active ? 'active' : 'inactive'">
+                                                            <i class="fas" ng-class="farm.is_active ? 'fa-check-circle' : 'fa-times-circle'"></i>
+                                                            {{farm.is_active ? 'Active' : 'Inactive'}}
+                                                        </span>
+                                                    </td>
+                                                    <td>{{farm.created_at | date:'mediumDate'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Card View -->
+                                <div class="cards-grid" ng-if="!farms.isLoading && farms.viewMode === 'card'">
+                                    <div class="farm-card" 
+                                         ng-repeat="farm in farms.farms | orderBy:farms.sortField:farms.sortReverse"
+                                         ng-click="farms.viewFarm(farm)">
+                                        <div class="farm-card-header">
+                                            <h4>{{farm.name}}</h4>
+                                            <span class="status-badge" ng-class="farm.is_active ? 'active' : 'inactive'">
+                                                {{farm.is_active ? 'Active' : 'Inactive'}}
+                                            </span>
+                                        </div>
+                                        <div class="farm-card-body">
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">Area</span>
+                                                <span class="card-info-value">{{farm.area | number:1}} acres</span>
+                                            </div>
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">Location</span>
+                                                <span class="card-info-value">{{farm.latitude | number:2}}°, {{farm.longitude | number:2}}°</span>
+                                            </div>
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">Created</span>
+                                                <span class="card-info-value">{{farm.created_at | date:'shortDate'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Empty State -->
+                                <div class="empty-state" ng-if="!farms.isLoading && farms.farms.length === 0">
+                                    <div class="empty-state-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <h4>No Farms Found</h4>
+                                    <p>There are no farms registered in the system yet.</p>
+                                </div>
+                            </div>
+
+                            <!-- Farm Detail View -->
+                            <div ng-if="farms.isDetailView" class="detail-page">
+                                <!-- Back Link -->
+                                <a class="back-link" ng-click="farms.goBack()">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back to Farms
+                                </a>
+
+                                <!-- Loading State -->
+                                <div class="loading" ng-if="farms.isLoading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+
+                                <div ng-if="!farms.isLoading && farms.selectedFarm">
+                                    <!-- Farm Header -->
+                                    <div class="detail-header">
+                                        <div class="detail-icon">
+                                            <i class="fas fa-seedling"></i>
+                                        </div>
+                                        <div class="detail-title">
+                                            <h2>{{farms.selectedFarm.name}}</h2>
+                                            <span class="detail-subtitle">Farm ID: {{farms.selectedFarm.id}}</span>
+                                        </div>
+                                        <span class="status-badge" ng-class="farms.selectedFarm.is_active ? 'active' : 'inactive'">
+                                            {{farms.selectedFarm.is_active ? 'Active' : 'Inactive'}}
+                                        </span>
+                                    </div>
+
+                                    <!-- Farm Overview -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Farm Overview</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="detail-grid">
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Farm ID</span>
+                                                    <span class="detail-value">{{farms.selectedFarm.id}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Farm Name</span>
+                                                    <span class="detail-value">{{farms.selectedFarm.name}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Area</span>
+                                                    <span class="detail-value">{{farms.selectedFarm.area | number:1}} acres</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Latitude</span>
+                                                    <span class="detail-value">{{farms.selectedFarm.latitude | number:6}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Longitude</span>
+                                                    <span class="detail-value">{{farms.selectedFarm.longitude | number:6}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Created At</span>
+                                                    <span class="detail-value">{{farms.selectedFarm.created_at | date:'medium'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Devices in Farm -->
+                                    <div class="detail-section">
+                                        <h3><i class="fas fa-microchip"></i> Devices in This Farm</h3>
+                                        
+                                        <div class="card" ng-if="farms.farmDevices.length > 0">
+                                            <div class="table-container">
+                                                <table class="data-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Asset Name</th>
+                                                            <th>Type</th>
+                                                            <th>OS/Firmware</th>
+                                                            <th>Status</th>
+                                                            <th>Last Seen</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="device in farms.farmDevices" 
+                                                            class="clickable"
+                                                            ng-click="farms.viewDevice(device)">
+                                                            <td><strong>{{device.name}}</strong></td>
+                                                            <td>{{device.type}}</td>
+                                                            <td>{{device.os}}</td>
+                                                            <td>
+                                                                <span class="status-badge" ng-class="device.is_active ? 'active' : 'inactive'">
+                                                                    {{device.is_active ? 'Active' : 'Inactive'}}
+                                                                </span>
+                                                            </td>
+                                                            <td>{{device.last_seen | date:'short'}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="empty-state" ng-if="farms.farmDevices.length === 0">
+                                            <div class="empty-state-icon">
+                                                <i class="fas fa-microchip"></i>
+                                            </div>
+                                            <h4>No Devices</h4>
+                                            <p>No devices are registered for this farm.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Devices Page -->
+                    <div ng-if="vm.currentPage === 'devices' || vm.currentPage === 'device-detail'" ng-controller="DevicesController as devices">
+                        <!-- Devices Page Content -->
+                        <div class="devices-page">
+                            <!-- Device List View -->
+                            <div ng-if="!devices.isDetailView">
+                                <!-- Page Header -->
+                                <div class="page-header">
+                                    <h2>All Devices</h2>
+                                    <div class="view-toggle">
+                                        <button ng-class="{'active': devices.viewMode === 'table'}" ng-click="devices.setViewMode('table')">
+                                            <i class="fas fa-list"></i>
+                                        </button>
+                                        <button ng-class="{'active': devices.viewMode === 'card'}" ng-click="devices.setViewMode('card')">
+                                            <i class="fas fa-th-large"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Filters -->
+                                <div class="filters-bar">
+                                    <div class="filter-group">
+                                        <label class="filter-label">Type:</label>
+                                        <select class="filter-select" ng-model="devices.filterType">
+                                            <option value="">All Types</option>
+                                            <option ng-repeat="type in devices.deviceTypes" value="{{type}}">{{type}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label class="filter-label">Status:</label>
+                                        <select class="filter-select" ng-model="devices.filterStatus">
+                                            <option value="">All Status</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Loading State -->
+                                <div class="loading" ng-if="devices.isLoading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+
+                                <!-- Table View -->
+                                <div class="card" ng-if="!devices.isLoading && devices.viewMode === 'table'">
+                                    <div class="table-container">
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sortable" ng-class="{'sorted': devices.sortField === 'name'}" ng-click="devices.sortBy('name')">
+                                                        Asset Name
+                                                        <i class="fas sort-icon" ng-class="devices.sortReverse ? 'fa-sort-down' : 'fa-sort-up'"></i>
+                                                    </th>
+                                                    <th>Type</th>
+                                                    <th>Farm</th>
+                                                    <th>OS/Firmware</th>
+                                                    <th>Status</th>
+                                                    <th>Created</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="device in devices.filteredDevices() | orderBy:devices.sortField:devices.sortReverse" 
+                                                    class="clickable"
+                                                    ng-click="devices.viewDevice(device)">
+                                                    <td><strong>{{device.name}}</strong></td>
+                                                    <td>{{device.type}}</td>
+                                                    <td>{{device.farm_name}}</td>
+                                                    <td>{{device.os}}</td>
+                                                    <td>
+                                                        <span class="status-badge" ng-class="device.is_active ? 'active' : 'inactive'">
+                                                            <i class="fas" ng-class="device.is_active ? 'fa-check-circle' : 'fa-times-circle'"></i>
+                                                            {{device.is_active ? 'Active' : 'Inactive'}}
+                                                        </span>
+                                                    </td>
+                                                    <td>{{device.created_at | date:'mediumDate'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Card View -->
+                                <div class="cards-grid" ng-if="!devices.isLoading && devices.viewMode === 'card'">
+                                    <div class="device-card" 
+                                         ng-repeat="device in devices.filteredDevices() | orderBy:devices.sortField:devices.sortReverse"
+                                         ng-click="devices.viewDevice(device)">
+                                        <div class="device-card-header">
+                                            <h4>{{device.name}}</h4>
+                                            <span class="status-badge" ng-class="device.is_active ? 'active' : 'inactive'">
+                                                {{device.is_active ? 'Active' : 'Inactive'}}
+                                            </span>
+                                        </div>
+                                        <div class="device-card-body">
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">Type</span>
+                                                <span class="card-info-value">{{device.type}}</span>
+                                            </div>
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">Farm</span>
+                                                <span class="card-info-value">{{device.farm_name}}</span>
+                                            </div>
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">OS</span>
+                                                <span class="card-info-value">{{device.os}}</span>
+                                            </div>
+                                            <div class="card-info-item">
+                                                <span class="card-info-label">Last Seen</span>
+                                                <span class="card-info-value">{{device.last_seen | date:'short'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Empty State -->
+                                <div class="empty-state" ng-if="!devices.isLoading && devices.filteredDevices().length === 0">
+                                    <div class="empty-state-icon">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <h4>No Devices Found</h4>
+                                    <p>No devices match your current filters.</p>
+                                </div>
+                            </div>
+
+                            <!-- Device Detail View -->
+                            <div ng-if="devices.isDetailView" class="detail-page">
+                                <!-- Back Link -->
+                                <a class="back-link" ng-click="devices.goBack()">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back to Devices
+                                </a>
+
+                                <!-- Loading State -->
+                                <div class="loading" ng-if="devices.isLoading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+
+                                <div ng-if="!devices.isLoading && devices.selectedDevice">
+                                    <!-- Device Header -->
+                                    <div class="detail-header">
+                                        <div class="detail-icon">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <div class="detail-title">
+                                            <h2>{{devices.selectedDevice.name}}</h2>
+                                            <span class="detail-subtitle">{{devices.selectedDevice.type}} • Asset ID: {{devices.selectedDevice.id}}</span>
+                                        </div>
+                                        <span class="status-badge" ng-class="devices.selectedDevice.is_active ? 'active' : 'inactive'">
+                                            {{devices.selectedDevice.is_active ? 'Active' : 'Inactive'}}
+                                        </span>
+                                    </div>
+
+                                    <!-- Device Details -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Device Information</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="detail-grid">
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Asset ID</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.id}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Asset Name</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.name}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Asset Type</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.type}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Farm</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.farm_name}} (ID: {{devices.selectedDevice.farm_id}})</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Owner User ID</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.owner_user_id}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">OS/Firmware</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.os}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Baseline Latitude</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.baseline_lat | number:6}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Baseline Longitude</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.baseline_long | number:6}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Last Seen</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.last_seen | date:'medium'}}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">Created At</span>
+                                                    <span class="detail-value">{{devices.selectedDevice.created_at | date:'medium'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Records Page -->
+                    <div ng-if="vm.currentPage === 'records'" ng-controller="RecordsController as records">
+                        <!-- Records Page Content -->
+                        <div class="records-page">
+                            <!-- Page Header -->
+                            <div class="page-header">
+                                <h2>ML Detection Records</h2>
+                                <button class="btn btn-secondary btn-sm" ng-click="records.clearFilters()">
+                                    <i class="fas fa-times"></i>
+                                    Clear Filters
+                                </button>
+                            </div>
+
+                            <!-- Filters -->
+                            <div class="filters-bar">
+                                <div class="filter-group">
+                                    <label class="filter-label">Prediction:</label>
+                                    <select class="filter-select" ng-model="records.filterPrediction">
+                                        <option value="">All</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Suspicious">Suspicious</option>
+                                        <option value="Anomaly">Anomaly</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label class="filter-label">Anomaly Score:</label>
+                                    <input type="number" 
+                                           class="filter-input" 
+                                           placeholder="Min" 
+                                           ng-model="records.filterMinScore"
+                                           min="0" 
+                                           max="1" 
+                                           step="0.1"
+                                           style="width: 80px;">
+                                    <span>-</span>
+                                    <input type="number" 
+                                           class="filter-input" 
+                                           placeholder="Max" 
+                                           ng-model="records.filterMaxScore"
+                                           min="0" 
+                                           max="1" 
+                                           step="0.1"
+                                           style="width: 80px;">
+                                </div>
+                                <div class="filter-group">
+                                    <label class="filter-label">Confidence (%):</label>
+                                    <input type="number" 
+                                           class="filter-input" 
+                                           placeholder="Min" 
+                                           ng-model="records.filterMinConfidence"
+                                           min="0" 
+                                           max="100"
+                                           style="width: 80px;">
+                                    <span>-</span>
+                                    <input type="number" 
+                                           class="filter-input" 
+                                           placeholder="Max" 
+                                           ng-model="records.filterMaxConfidence"
+                                           min="0" 
+                                           max="100"
+                                           style="width: 80px;">
+                                </div>
+                            </div>
+
+                            <!-- Loading State -->
+                            <div class="loading" ng-if="records.isLoading">
+                                <div class="loading-spinner"></div>
+                            </div>
+
+                            <!-- Records Table -->
+                            <div class="card" ng-if="!records.isLoading">
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Event ID</th>
+                                                <th>Device</th>
+                                                <th>Prediction</th>
+                                                <th>Anomaly Score</th>
+                                                <th>Confidence</th>
+                                                <th>Response Action</th>
+                                                <th>Processed At</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat-start="record in records.filteredRecords()" 
+                                                class="clickable" 
+                                                ng-click="records.toggleRow(record.id)">
+                                                <td><strong>{{record.event_id}}</strong></td>
+                                                <td>{{record.device_name}}</td>
+                                                <td>
+                                                    <span class="status-badge" ng-class="records.getPredictionClass(record.prediction)">
+                                                        {{record.prediction}}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="detail-value score-value">{{record.anomaly_score | number:2}}</span>
+                                                </td>
+                                                <td>{{record.confidence * 100 | number:0}}%</td>
+                                                <td>{{record.response_action}}</td>
+                                                <td>{{record.processed_at | date:'short'}}</td>
+                                                <td>
+                                                    <i class="fas" ng-class="records.expandedRow === record.id ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat-end ng-if="records.expandedRow === record.id" class="expanded-row">
+                                                <td colspan="8">
+                                                    <div class="expanded-content">
+                                                        <div class="detail-grid" style="padding: 1rem;">
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Event ID</span>
+                                                                <span class="detail-value">{{record.event_id}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Device ID</span>
+                                                                <span class="detail-value">{{record.device_id}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Farm ID</span>
+                                                                <span class="detail-value">{{record.farm_id}}</span>
+                                                            </div>
+                                                            <div class="detail-item">
+                                                                <span class="detail-label">Location</span>
+                                                                <span class="detail-value">{{record.latitude | number:4}}°, {{record.longitude | number:4}}°</span>
+                                                            </div>
+                                                            <div class="detail-item full-width">
+                                                                <span class="detail-label">Analysis & Reasons</span>
+                                                                <span class="detail-value reasons-text">{{record.reasons}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Empty State -->
+                            <div class="empty-state" ng-if="!records.isLoading && records.filteredRecords().length === 0">
+                                <div class="empty-state-icon">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+                                <h4>No Records Found</h4>
+                                <p>No ML detection records match your current filters.</p>
+                            </div>
+                        </div>
+
+                        <style>
+                            .expanded-row td {
+                                background: rgba(255, 255, 255, 0.02) !important;
+                                border-bottom: 2px solid var(--accent-gold) !important;
+                            }
+                            
+                            .expanded-content {
+                                animation: slideDown 0.2s ease;
+                            }
+                            
+                            @keyframes slideDown {
+                                from {
+                                    opacity: 0;
+                                    transform: translateY(-10px);
+                                }
+                                to {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+                            }
+                        </style>
+                    </div>
+
+                    <!-- Geographic Page -->
+                    <div ng-if="vm.currentPage === 'geographic'" ng-controller="GeographicController as geo">
+                        <!-- Geographic Page Content -->
+                        <div class="geographic-page">
+                            <!-- Page Header -->
+                            <div class="page-header">
+                                <h2>India Threat Map</h2>
+                                <div class="geo-stats">
+                                    <div class="geo-stat-item">
+                                        <span class="geo-stat-value normal">{{geo.stats.normal}}</span>
+                                        <span class="geo-stat-label">Normal</span>
+                                    </div>
+                                    <div class="geo-stat-item">
+                                        <span class="geo-stat-value suspicious">{{geo.stats.suspicious}}</span>
+                                        <span class="geo-stat-label">Suspicious</span>
+                                    </div>
+                                    <div class="geo-stat-item">
+                                        <span class="geo-stat-value anomaly">{{geo.stats.anomaly}}</span>
+                                        <span class="geo-stat-label">Anomaly</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Loading State -->
+                            <div class="loading" ng-if="geo.isLoading">
+                                <div class="loading-spinner"></div>
+                            </div>
+
+                            <!-- Main Map Container -->
+                            <div class="geo-map-container" ng-if="!geo.isLoading">
+                                <div class="geo-map-card">
+                                    <india-map 
+                                        events="geo.mapEvents" 
+                                        on-event-click="geo.openEventModal(event)"
+                                        full-view="true">
+                                    </india-map>
+                                </div>
+                            </div>
+
+                            <!-- Events List -->
+                            <div class="geo-events-section" ng-if="!geo.isLoading">
+                                <h3><i class="fas fa-list-ul"></i> Recent Threat Events</h3>
+                                <div class="geo-events-grid">
+                                    <div class="geo-event-card" 
+                                         ng-repeat="event in geo.mapEvents | limitTo:6"
+                                         ng-click="geo.openEventModal(event)">
+                                        <div class="geo-event-header">
+                                            <span class="geo-event-id">{{event.id}}</span>
+                                            <span class="status-badge" ng-class="{
+                                                'badge-normal': event.prediction === 'Normal',
+                                                'badge-suspicious': event.prediction === 'Suspicious',
+                                                'badge-anomaly': event.prediction === 'Anomaly'
+                                            }">{{event.prediction}}</span>
+                                        </div>
+                                        <div class="geo-event-body">
+                                            <div class="geo-event-row">
+                                                <i class="fas fa-microchip"></i>
+                                                <span>{{event.asset_type}}</span>
+                                            </div>
+                                            <div class="geo-event-row">
+                                                <i class="fas fa-seedling"></i>
+                                                <span>{{event.farm_name}}</span>
+                                            </div>
+                                            <div class="geo-event-row">
+                                                <i class="fas fa-map-pin"></i>
+                                                <span>{{event.latitude | number:2}}°, {{event.longitude | number:2}}°</span>
+                                            </div>
+                                            <div class="geo-event-score">
+                                                <span class="score-label">Anomaly Score</span>
+                                                <span class="score-value" ng-class="{
+                                                    'score-low': event.anomaly_score < 0.3,
+                                                    'score-medium': event.anomaly_score >= 0.3 && event.anomaly_score < 0.6,
+                                                    'score-high': event.anomaly_score >= 0.6
+                                                }">{{event.anomaly_score | number:2}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Page -->
+                    <div ng-if="vm.currentPage === 'account'" ng-controller="AccountController as account">
+                        <!-- Account Page Content -->
+                        <div class="account-page">
+                            <div class="account-card">
+                                <!-- Header -->
+                                <div class="account-header">
+                                    <div class="account-avatar">
+                                        {{account.getInitials()}}
+                                    </div>
+                                    <h2>{{account.user.name}}</h2>
+                                    <span class="role-badge">
+                                        <i class="fas fa-user-tag"></i>
+                                        {{account.user.role}}
+                                    </span>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="account-body">
+                                    <div class="account-info-item">
+                                        <div class="account-info-icon">
+                                            <i class="fas fa-fingerprint"></i>
+                                        </div>
+                                        <div class="account-info-content">
+                                            <span class="account-info-label">User ID</span>
+                                            <span class="account-info-value">{{account.user.id}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="account-info-item">
+                                        <div class="account-info-icon">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="account-info-content">
+                                            <span class="account-info-label">Full Name</span>
+                                            <span class="account-info-value">{{account.user.name}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="account-info-item">
+                                        <div class="account-info-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="account-info-content">
+                                            <span class="account-info-label">Email Address</span>
+                                            <span class="account-info-value">{{account.user.email}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="account-info-item">
+                                        <div class="account-info-icon">
+                                            <i class="fas fa-user-shield"></i>
+                                        </div>
+                                        <div class="account-info-content">
+                                            <span class="account-info-label">Role</span>
+                                            <span class="account-info-value">{{account.user.role}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="account-info-item">
+                                        <div class="account-info-icon">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                        <div class="account-info-content">
+                                            <span class="account-info-label">Account Created</span>
+                                            <span class="account-info-value">{{account.user.created_at | date:'mediumDate'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Info Note -->
+                            <div class="text-center mt-lg">
+                                <p style="color: var(--text-dark-muted); font-size: 0.85rem;">
+                                    <i class="fas fa-info-circle"></i>
+                                    This is a read-only view. Account modifications are not available in this prototype.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </script>
+
+    <!-- Logout Modal -->
+    <div class="modal-overlay" ng-if="showLogoutModal" ng-click="showLogoutModal = false">
+        <div class="modal" ng-click="$event.stopPropagation()">
+            <div class="modal-header">
+                <h3>Confirm Logout</h3>
+                <button class="modal-close" ng-click="showLogoutModal = false">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" ng-click="showLogoutModal = false">Cancel</button>
+                <button class="btn btn-danger" ng-click="confirmLogout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div class="modal-overlay" ng-if="selectedEvent" ng-click="selectedEvent = null">
+        <div class="modal modal-lg" ng-click="$event.stopPropagation()">
+            <div class="modal-header">
+                <h3>Event Details</h3>
+                <button class="modal-close" ng-click="selectedEvent = null">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">Event ID</span>
+                        <span class="detail-value">{{selectedEvent.event_id || selectedEvent.id}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Prediction</span>
+                        <span class="status-badge" ng-class="{
+                            'badge-normal': selectedEvent.prediction === 'Normal',
+                            'badge-suspicious': selectedEvent.prediction === 'Suspicious',
+                            'badge-anomaly': selectedEvent.prediction === 'Anomaly'
+                        }">
+                            {{selectedEvent.prediction}}
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Anomaly Score</span>
+                        <span class="detail-value">{{selectedEvent.anomaly_score | number:3}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Asset Type</span>
+                        <span class="detail-value">{{selectedEvent.asset_type}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Location</span>
+                        <span class="detail-value">{{selectedEvent.latitude | number:4}}°, {{selectedEvent.longitude | number:4}}°</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Farm</span>
+                        <span class="detail-value">{{selectedEvent.farm_name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" ng-click="selectedEvent = null">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    
+    <!-- Single App JS File -->
+    <script src="index.js"></script>
+</body>
+</html>
