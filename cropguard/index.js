@@ -10,64 +10,64 @@
     // MOCK DATA
     // ============================================
     
-    var MOCK_DATA = {
-        user: {
-            id: 1,
-            name: 'Nidhi Patel',
-            email: 'nidhipatel2005@gmail.com',
-            role: 'Farmer',
-            created_at: '2024-01-15T10:30:00Z'
-        },
-        farms: [
-            { id: 1, name: 'Green Valley Farm', area: 150.5, latitude: 28.6139, longitude: 77.2090, is_active: true, created_at: '2024-01-10T08:00:00Z' },
-            { id: 2, name: 'Sunrise Organic Farm', area: 200.0, latitude: 19.0760, longitude: 72.8777, is_active: true, created_at: '2024-01-12T09:30:00Z' },
-            { id: 3, name: 'Krishna Agro Fields', area: 175.25, latitude: 13.0827, longitude: 80.2707, is_active: true, created_at: '2024-01-14T11:00:00Z' },
-            { id: 4, name: 'Punjab Golden Harvest', area: 300.0, latitude: 31.1471, longitude: 75.3412, is_active: true, created_at: '2024-01-16T14:00:00Z' },
-            { id: 5, name: 'Deccan Plateau Farm', area: 125.75, latitude: 17.3850, longitude: 78.4867, is_active: false, created_at: '2024-01-18T16:30:00Z' }
-        ],
-        devices: [
-            { id: 1, name: 'Soil Sensor Alpha', type: 'Soil Sensor', farm_id: 1, farm_name: 'Green Valley Farm', os: 'SensorOS 2.1', is_active: true, baseline_lat: 28.6139, baseline_long: 77.2090, last_seen: '2024-01-20T10:00:00Z', created_at: '2024-01-10T08:30:00Z', owner_user_id: 1 },
-            { id: 2, name: 'Weather Station Beta', type: 'Weather Station', farm_id: 1, farm_name: 'Green Valley Farm', os: 'WeatherOS 3.0', is_active: true, baseline_lat: 28.6145, baseline_long: 77.2095, last_seen: '2024-01-20T09:55:00Z', created_at: '2024-01-10T09:00:00Z', owner_user_id: 1 },
-            { id: 3, name: 'Irrigation Controller 01', type: 'Controller', farm_id: 2, farm_name: 'Sunrise Organic Farm', os: 'IrrigateOS 1.5', is_active: true, baseline_lat: 19.0760, baseline_long: 72.8777, last_seen: '2024-01-20T09:45:00Z', created_at: '2024-01-12T10:00:00Z', owner_user_id: 1 },
-            { id: 4, name: 'Gateway Hub Central', type: 'Gateway', farm_id: 2, farm_name: 'Sunrise Organic Farm', os: 'GatewayOS 4.2', is_active: true, baseline_lat: 19.0765, baseline_long: 72.8780, last_seen: '2024-01-20T09:50:00Z', created_at: '2024-01-12T10:30:00Z', owner_user_id: 1 },
-            { id: 5, name: 'Soil Sensor Gamma', type: 'Soil Sensor', farm_id: 3, farm_name: 'Krishna Agro Fields', os: 'SensorOS 2.1', is_active: true, baseline_lat: 13.0827, baseline_long: 80.2707, last_seen: '2024-01-20T09:40:00Z', created_at: '2024-01-14T11:30:00Z', owner_user_id: 1 },
-            { id: 6, name: 'Weather Station Delta', type: 'Weather Station', farm_id: 3, farm_name: 'Krishna Agro Fields', os: 'WeatherOS 3.0', is_active: false, baseline_lat: 13.0830, baseline_long: 80.2710, last_seen: '2024-01-19T18:00:00Z', created_at: '2024-01-14T12:00:00Z', owner_user_id: 1 },
-            { id: 7, name: 'Irrigation Controller 02', type: 'Controller', farm_id: 4, farm_name: 'Punjab Golden Harvest', os: 'IrrigateOS 1.5', is_active: true, baseline_lat: 31.1471, baseline_long: 75.3412, last_seen: '2024-01-20T09:30:00Z', created_at: '2024-01-16T14:30:00Z', owner_user_id: 1 },
-            { id: 8, name: 'Gateway Hub North', type: 'Gateway', farm_id: 4, farm_name: 'Punjab Golden Harvest', os: 'GatewayOS 4.2', is_active: true, baseline_lat: 31.1475, baseline_long: 75.3415, last_seen: '2024-01-20T09:35:00Z', created_at: '2024-01-16T15:00:00Z', owner_user_id: 1 },
-            { id: 9, name: 'Soil Sensor Epsilon', type: 'Soil Sensor', farm_id: 5, farm_name: 'Deccan Plateau Farm', os: 'SensorOS 2.0', is_active: false, baseline_lat: 17.3850, baseline_long: 78.4867, last_seen: '2024-01-18T20:00:00Z', created_at: '2024-01-18T17:00:00Z', owner_user_id: 1 },
-            { id: 10, name: 'Weather Station Zeta', type: 'Weather Station', farm_id: 5, farm_name: 'Deccan Plateau Farm', os: 'WeatherOS 2.5', is_active: false, baseline_lat: 17.3855, baseline_long: 78.4870, last_seen: '2024-01-18T19:30:00Z', created_at: '2024-01-18T17:30:00Z', owner_user_id: 1 }
-        ],
-        records: [
-            { id: 1, event_id: 'EVT-001', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.12, confidence: 0.95, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'All sensor readings within expected parameters. Soil moisture at 45%, temperature at 22°C.', processed_at: '2024-01-20T10:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Authorized' },
-            { id: 2, event_id: 'EVT-002', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.08, confidence: 0.97, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Weather data consistent with regional forecasts. No anomalies detected.', processed_at: '2024-01-20T09:55:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Weather Data', authorization_status: 'Authorized' },
-            { id: 3, event_id: 'EVT-003', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Suspicious', anomaly_score: 0.45, confidence: 0.82, response_action: 'Alert Sent', latitude: 19.0760, longitude: 72.8777, reasons: 'Unusual command sequence detected. Water flow rate 20% higher than scheduled. Possible misconfiguration or unauthorized access attempt.', processed_at: '2024-01-20T09:45:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Suspicious' },
-            { id: 4, event_id: 'EVT-004', device_id: 4, device_name: 'Gateway Hub Central', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.15, confidence: 0.91, response_action: 'None', latitude: 19.0765, longitude: 72.8780, reasons: 'Network traffic patterns normal. All connected devices responding within expected latency.', processed_at: '2024-01-20T09:50:00Z', asset_type: 'Gateway', action_type: 'Read', resource_type: 'Network Traffic', authorization_status: 'Authorized' },
-            { id: 5, event_id: 'EVT-005', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.78, confidence: 0.88, response_action: 'Device Isolated', latitude: 13.0827, longitude: 80.2707, reasons: 'GPS location drift detected (>500m from baseline). Possible device tampering or relocation. Sensor readings inconsistent with neighboring devices.', processed_at: '2024-01-20T09:40:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Location Data', authorization_status: 'Unauthorized' },
-            { id: 6, event_id: 'EVT-006', device_id: 6, device_name: 'Weather Station Delta', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.85, confidence: 0.92, response_action: 'Device Isolated', latitude: 13.0830, longitude: 80.2710, reasons: 'Device offline for extended period. Last known readings showed temperature spike inconsistent with regional data. Possible hardware failure or cyber attack.', processed_at: '2024-01-19T18:00:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Unauthorized' },
-            { id: 7, event_id: 'EVT-007', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.10, confidence: 0.96, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Irrigation schedule executed as planned. Water consumption within expected range.', processed_at: '2024-01-20T09:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
-            { id: 8, event_id: 'EVT-008', device_id: 8, device_name: 'Gateway Hub North', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Suspicious', anomaly_score: 0.52, confidence: 0.79, response_action: 'Alert Sent', latitude: 31.1475, longitude: 75.3415, reasons: 'Unusual login attempt from unrecognized IP address. Authentication successful but access pattern differs from historical baseline.', processed_at: '2024-01-20T09:35:00Z', asset_type: 'Gateway', action_type: 'Access', resource_type: 'Authentication', authorization_status: 'Suspicious' },
-            { id: 9, event_id: 'EVT-009', device_id: 9, device_name: 'Soil Sensor Epsilon', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Anomaly', anomaly_score: 0.91, confidence: 0.94, response_action: 'Device Isolated', latitude: 17.3850, longitude: 78.4867, reasons: 'Communication protocol violation detected. Device sending malformed packets. Possible firmware corruption or injection attack.', processed_at: '2024-01-18T20:00:00Z', asset_type: 'Soil Sensor', action_type: 'Write', resource_type: 'Communication', authorization_status: 'Unauthorized' },
-            { id: 10, event_id: 'EVT-010', device_id: 10, device_name: 'Weather Station Zeta', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Suspicious', anomaly_score: 0.48, confidence: 0.85, response_action: 'Alert Sent', latitude: 17.3855, longitude: 78.4870, reasons: 'Data transmission frequency increased by 300%. Possible data exfiltration attempt or sensor malfunction.', processed_at: '2024-01-18T19:30:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Data Transmission', authorization_status: 'Suspicious' },
-            { id: 11, event_id: 'EVT-011', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.11, confidence: 0.94, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'Routine check passed. All parameters nominal.', processed_at: '2024-01-20T08:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Authorized' },
-            { id: 12, event_id: 'EVT-012', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.18, confidence: 0.89, response_action: 'None', latitude: 19.0760, longitude: 72.8777, reasons: 'Morning irrigation cycle completed successfully.', processed_at: '2024-01-20T07:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
-            { id: 13, event_id: 'EVT-013', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Suspicious', anomaly_score: 0.55, confidence: 0.81, response_action: 'Alert Sent', latitude: 13.0827, longitude: 80.2707, reasons: 'Minor GPS drift detected. Monitoring for further anomalies.', processed_at: '2024-01-20T06:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Location Data', authorization_status: 'Suspicious' },
-            { id: 14, event_id: 'EVT-014', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.09, confidence: 0.97, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Evening irrigation cycle completed. Water usage optimal.', processed_at: '2024-01-19T18:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
-            { id: 15, event_id: 'EVT-015', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.07, confidence: 0.98, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Daily weather summary generated. All readings consistent.', processed_at: '2024-01-19T23:59:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Weather Data', authorization_status: 'Authorized' }
-        ],
-        devicesData: [
-            { date: 'Jan 10', active: 2, inactive: 0 }, { date: 'Jan 11', active: 3, inactive: 0 }, { date: 'Jan 12', active: 4, inactive: 0 },
-            { date: 'Jan 13', active: 5, inactive: 0 }, { date: 'Jan 14', active: 6, inactive: 1 }, { date: 'Jan 15', active: 6, inactive: 1 },
-            { date: 'Jan 16', active: 7, inactive: 1 }, { date: 'Jan 17', active: 8, inactive: 1 }, { date: 'Jan 18', active: 7, inactive: 3 },
-            { date: 'Jan 19', active: 7, inactive: 3 }, { date: 'Jan 20', active: 7, inactive: 3 }
-        ],
-        predictionDistribution: { normal: 8, suspicious: 4, anomaly: 3 },
-        recordsData: [
-            { date: 'Jan 10', count: 1 }, { date: 'Jan 11', count: 1 }, { date: 'Jan 12', count: 2 },
-            { date: 'Jan 13', count: 1 }, { date: 'Jan 14', count: 2 }, { date: 'Jan 15', count: 1 },
-            { date: 'Jan 16', count: 1 }, { date: 'Jan 17', count: 1 }, { date: 'Jan 18', count: 3 },
-            { date: 'Jan 19', count: 2 }, { date: 'Jan 20', count: 5 }
-        ]
-    };
+    // var MOCK_DATA = {
+    //     user: {
+    //         id: 1,
+    //         name: 'Nidhi Patel',
+    //         email: 'nidhipatel2005@gmail.com',
+    //         role: 'Farmer',
+    //         created_at: '2024-01-15T10:30:00Z'
+    //     },
+    //     farms: [
+    //         { id: 1, name: 'Green Valley Farm', area: 150.5, latitude: 28.6139, longitude: 77.2090, is_active: true, created_at: '2024-01-10T08:00:00Z' },
+    //         { id: 2, name: 'Sunrise Organic Farm', area: 200.0, latitude: 19.0760, longitude: 72.8777, is_active: true, created_at: '2024-01-12T09:30:00Z' },
+    //         { id: 3, name: 'Krishna Agro Fields', area: 175.25, latitude: 13.0827, longitude: 80.2707, is_active: true, created_at: '2024-01-14T11:00:00Z' },
+    //         { id: 4, name: 'Punjab Golden Harvest', area: 300.0, latitude: 31.1471, longitude: 75.3412, is_active: true, created_at: '2024-01-16T14:00:00Z' },
+    //         { id: 5, name: 'Deccan Plateau Farm', area: 125.75, latitude: 17.3850, longitude: 78.4867, is_active: false, created_at: '2024-01-18T16:30:00Z' }
+    //     ],
+    //     devices: [
+    //         { id: 1, name: 'Soil Sensor Alpha', type: 'Soil Sensor', farm_id: 1, farm_name: 'Green Valley Farm', os: 'SensorOS 2.1', is_active: true, baseline_lat: 28.6139, baseline_long: 77.2090, last_seen: '2024-01-20T10:00:00Z', created_at: '2024-01-10T08:30:00Z', owner_user_id: 1 },
+    //         { id: 2, name: 'Weather Station Beta', type: 'Weather Station', farm_id: 1, farm_name: 'Green Valley Farm', os: 'WeatherOS 3.0', is_active: true, baseline_lat: 28.6145, baseline_long: 77.2095, last_seen: '2024-01-20T09:55:00Z', created_at: '2024-01-10T09:00:00Z', owner_user_id: 1 },
+    //         { id: 3, name: 'Irrigation Controller 01', type: 'Controller', farm_id: 2, farm_name: 'Sunrise Organic Farm', os: 'IrrigateOS 1.5', is_active: true, baseline_lat: 19.0760, baseline_long: 72.8777, last_seen: '2024-01-20T09:45:00Z', created_at: '2024-01-12T10:00:00Z', owner_user_id: 1 },
+    //         { id: 4, name: 'Gateway Hub Central', type: 'Gateway', farm_id: 2, farm_name: 'Sunrise Organic Farm', os: 'GatewayOS 4.2', is_active: true, baseline_lat: 19.0765, baseline_long: 72.8780, last_seen: '2024-01-20T09:50:00Z', created_at: '2024-01-12T10:30:00Z', owner_user_id: 1 },
+    //         { id: 5, name: 'Soil Sensor Gamma', type: 'Soil Sensor', farm_id: 3, farm_name: 'Krishna Agro Fields', os: 'SensorOS 2.1', is_active: true, baseline_lat: 13.0827, baseline_long: 80.2707, last_seen: '2024-01-20T09:40:00Z', created_at: '2024-01-14T11:30:00Z', owner_user_id: 1 },
+    //         { id: 6, name: 'Weather Station Delta', type: 'Weather Station', farm_id: 3, farm_name: 'Krishna Agro Fields', os: 'WeatherOS 3.0', is_active: false, baseline_lat: 13.0830, baseline_long: 80.2710, last_seen: '2024-01-19T18:00:00Z', created_at: '2024-01-14T12:00:00Z', owner_user_id: 1 },
+    //         { id: 7, name: 'Irrigation Controller 02', type: 'Controller', farm_id: 4, farm_name: 'Punjab Golden Harvest', os: 'IrrigateOS 1.5', is_active: true, baseline_lat: 31.1471, baseline_long: 75.3412, last_seen: '2024-01-20T09:30:00Z', created_at: '2024-01-16T14:30:00Z', owner_user_id: 1 },
+    //         { id: 8, name: 'Gateway Hub North', type: 'Gateway', farm_id: 4, farm_name: 'Punjab Golden Harvest', os: 'GatewayOS 4.2', is_active: true, baseline_lat: 31.1475, baseline_long: 75.3415, last_seen: '2024-01-20T09:35:00Z', created_at: '2024-01-16T15:00:00Z', owner_user_id: 1 },
+    //         { id: 9, name: 'Soil Sensor Epsilon', type: 'Soil Sensor', farm_id: 5, farm_name: 'Deccan Plateau Farm', os: 'SensorOS 2.0', is_active: false, baseline_lat: 17.3850, baseline_long: 78.4867, last_seen: '2024-01-18T20:00:00Z', created_at: '2024-01-18T17:00:00Z', owner_user_id: 1 },
+    //         { id: 10, name: 'Weather Station Zeta', type: 'Weather Station', farm_id: 5, farm_name: 'Deccan Plateau Farm', os: 'WeatherOS 2.5', is_active: false, baseline_lat: 17.3855, baseline_long: 78.4870, last_seen: '2024-01-18T19:30:00Z', created_at: '2024-01-18T17:30:00Z', owner_user_id: 1 }
+    //     ],
+    //     records: [
+    //         { id: 1, event_id: 'EVT-001', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.12, confidence: 0.95, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'All sensor readings within expected parameters. Soil moisture at 45%, temperature at 22°C.', processed_at: '2024-01-20T10:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Authorized' },
+    //         { id: 2, event_id: 'EVT-002', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.08, confidence: 0.97, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Weather data consistent with regional forecasts. No anomalies detected.', processed_at: '2024-01-20T09:55:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Weather Data', authorization_status: 'Authorized' },
+    //         { id: 3, event_id: 'EVT-003', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Suspicious', anomaly_score: 0.45, confidence: 0.82, response_action: 'Alert Sent', latitude: 19.0760, longitude: 72.8777, reasons: 'Unusual command sequence detected. Water flow rate 20% higher than scheduled. Possible misconfiguration or unauthorized access attempt.', processed_at: '2024-01-20T09:45:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Suspicious' },
+    //         { id: 4, event_id: 'EVT-004', device_id: 4, device_name: 'Gateway Hub Central', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.15, confidence: 0.91, response_action: 'None', latitude: 19.0765, longitude: 72.8780, reasons: 'Network traffic patterns normal. All connected devices responding within expected latency.', processed_at: '2024-01-20T09:50:00Z', asset_type: 'Gateway', action_type: 'Read', resource_type: 'Network Traffic', authorization_status: 'Authorized' },
+    //         { id: 5, event_id: 'EVT-005', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.78, confidence: 0.88, response_action: 'Device Isolated', latitude: 13.0827, longitude: 80.2707, reasons: 'GPS location drift detected (>500m from baseline). Possible device tampering or relocation. Sensor readings inconsistent with neighboring devices.', processed_at: '2024-01-20T09:40:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Location Data', authorization_status: 'Unauthorized' },
+    //         { id: 6, event_id: 'EVT-006', device_id: 6, device_name: 'Weather Station Delta', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Anomaly', anomaly_score: 0.85, confidence: 0.92, response_action: 'Device Isolated', latitude: 13.0830, longitude: 80.2710, reasons: 'Device offline for extended period. Last known readings showed temperature spike inconsistent with regional data. Possible hardware failure or cyber attack.', processed_at: '2024-01-19T18:00:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Unauthorized' },
+    //         { id: 7, event_id: 'EVT-007', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.10, confidence: 0.96, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Irrigation schedule executed as planned. Water consumption within expected range.', processed_at: '2024-01-20T09:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
+    //         { id: 8, event_id: 'EVT-008', device_id: 8, device_name: 'Gateway Hub North', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Suspicious', anomaly_score: 0.52, confidence: 0.79, response_action: 'Alert Sent', latitude: 31.1475, longitude: 75.3415, reasons: 'Unusual login attempt from unrecognized IP address. Authentication successful but access pattern differs from historical baseline.', processed_at: '2024-01-20T09:35:00Z', asset_type: 'Gateway', action_type: 'Access', resource_type: 'Authentication', authorization_status: 'Suspicious' },
+    //         { id: 9, event_id: 'EVT-009', device_id: 9, device_name: 'Soil Sensor Epsilon', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Anomaly', anomaly_score: 0.91, confidence: 0.94, response_action: 'Device Isolated', latitude: 17.3850, longitude: 78.4867, reasons: 'Communication protocol violation detected. Device sending malformed packets. Possible firmware corruption or injection attack.', processed_at: '2024-01-18T20:00:00Z', asset_type: 'Soil Sensor', action_type: 'Write', resource_type: 'Communication', authorization_status: 'Unauthorized' },
+    //         { id: 10, event_id: 'EVT-010', device_id: 10, device_name: 'Weather Station Zeta', farm_id: 5, farm_name: 'Deccan Plateau Farm', prediction: 'Suspicious', anomaly_score: 0.48, confidence: 0.85, response_action: 'Alert Sent', latitude: 17.3855, longitude: 78.4870, reasons: 'Data transmission frequency increased by 300%. Possible data exfiltration attempt or sensor malfunction.', processed_at: '2024-01-18T19:30:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Data Transmission', authorization_status: 'Suspicious' },
+    //         { id: 11, event_id: 'EVT-011', device_id: 1, device_name: 'Soil Sensor Alpha', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.11, confidence: 0.94, response_action: 'None', latitude: 28.6139, longitude: 77.2090, reasons: 'Routine check passed. All parameters nominal.', processed_at: '2024-01-20T08:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Sensor Data', authorization_status: 'Authorized' },
+    //         { id: 12, event_id: 'EVT-012', device_id: 3, device_name: 'Irrigation Controller 01', farm_id: 2, farm_name: 'Sunrise Organic Farm', prediction: 'Normal', anomaly_score: 0.18, confidence: 0.89, response_action: 'None', latitude: 19.0760, longitude: 72.8777, reasons: 'Morning irrigation cycle completed successfully.', processed_at: '2024-01-20T07:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
+    //         { id: 13, event_id: 'EVT-013', device_id: 5, device_name: 'Soil Sensor Gamma', farm_id: 3, farm_name: 'Krishna Agro Fields', prediction: 'Suspicious', anomaly_score: 0.55, confidence: 0.81, response_action: 'Alert Sent', latitude: 13.0827, longitude: 80.2707, reasons: 'Minor GPS drift detected. Monitoring for further anomalies.', processed_at: '2024-01-20T06:00:00Z', asset_type: 'Soil Sensor', action_type: 'Read', resource_type: 'Location Data', authorization_status: 'Suspicious' },
+    //         { id: 14, event_id: 'EVT-014', device_id: 7, device_name: 'Irrigation Controller 02', farm_id: 4, farm_name: 'Punjab Golden Harvest', prediction: 'Normal', anomaly_score: 0.09, confidence: 0.97, response_action: 'None', latitude: 31.1471, longitude: 75.3412, reasons: 'Evening irrigation cycle completed. Water usage optimal.', processed_at: '2024-01-19T18:30:00Z', asset_type: 'Controller', action_type: 'Write', resource_type: 'Control Command', authorization_status: 'Authorized' },
+    //         { id: 15, event_id: 'EVT-015', device_id: 2, device_name: 'Weather Station Beta', farm_id: 1, farm_name: 'Green Valley Farm', prediction: 'Normal', anomaly_score: 0.07, confidence: 0.98, response_action: 'None', latitude: 28.6145, longitude: 77.2095, reasons: 'Daily weather summary generated. All readings consistent.', processed_at: '2024-01-19T23:59:00Z', asset_type: 'Weather Station', action_type: 'Read', resource_type: 'Weather Data', authorization_status: 'Authorized' }
+    //     ],
+    //     devicesData: [
+    //         { date: 'Jan 10', active: 2, inactive: 0 }, { date: 'Jan 11', active: 3, inactive: 0 }, { date: 'Jan 12', active: 4, inactive: 0 },
+    //         { date: 'Jan 13', active: 5, inactive: 0 }, { date: 'Jan 14', active: 6, inactive: 1 }, { date: 'Jan 15', active: 6, inactive: 1 },
+    //         { date: 'Jan 16', active: 7, inactive: 1 }, { date: 'Jan 17', active: 8, inactive: 1 }, { date: 'Jan 18', active: 7, inactive: 3 },
+    //         { date: 'Jan 19', active: 7, inactive: 3 }, { date: 'Jan 20', active: 7, inactive: 3 }
+    //     ],
+    //     predictionDistribution: { normal: 8, suspicious: 4, anomaly: 3 },
+    //     recordsData: [
+    //         { date: 'Jan 10', count: 1 }, { date: 'Jan 11', count: 1 }, { date: 'Jan 12', count: 2 },
+    //         { date: 'Jan 13', count: 1 }, { date: 'Jan 14', count: 2 }, { date: 'Jan 15', count: 1 },
+    //         { date: 'Jan 16', count: 1 }, { date: 'Jan 17', count: 1 }, { date: 'Jan 18', count: 3 },
+    //         { date: 'Jan 19', count: 2 }, { date: 'Jan 20', count: 5 }
+    //     ]
+    // };
 
     // ============================================
     // MODULE DEFINITION & CONFIG
@@ -207,127 +207,156 @@
             $locationProvider.hashPrefix('');
         }]);
 
+        // ============================================
+// AUTH SERVICE (Simple Local Auth)
+// ============================================
+
+angular.module('cropGuardApp')
+.factory('AuthService', ['$q', function ($q) {
+
+    let currentUser = null;
+
+    return {
+        login: function () {
+            currentUser = {
+                id: 'FARMER_001',
+                name: 'Farmer Demo',
+                email: 'farmer@demo.com',
+                role: 'Farmer',
+                created_at: new Date()
+            };
+            return $q.resolve(currentUser);
+        },
+        
+
+        logout: function () {
+            currentUser = null;
+        },
+
+        isAuthenticated: function () {
+            return !!currentUser;
+        },
+
+        getCurrentUser: function () {
+            return currentUser;
+        }
+    };
+}]);
+
+
     // ============================================
     // DATA SERVICE (Mock Data)
     // ============================================
     
     angular.module('cropGuardApp')
-        .factory('DataService', ['$q', function($q) {
-            return {
-                getFarms: function() { return $q.resolve(MOCK_DATA.farms); },
-                getFarm: function(id) {
-                    var farm = MOCK_DATA.farms.find(function(f) { return f.id === id; });
-                    return farm ? $q.resolve(farm) : $q.reject({ message: 'Farm not found' });
-                },
-                getDevices: function() { return $q.resolve(MOCK_DATA.devices); },
-                getDevice: function(id) {
-                    var device = MOCK_DATA.devices.find(function(d) { return d.id === id; });
-                    return device ? $q.resolve(device) : $q.reject({ message: 'Device not found' });
-                },
-                getDevicesByFarm: function(farmId) {
-                    var devices = MOCK_DATA.devices.filter(function(d) { return d.farm_id === farmId; });
-                    return $q.resolve(devices);
-                },
-                getRecords: function() { return $q.resolve(MOCK_DATA.records); },
-                getDevicesData: function() { return $q.resolve(MOCK_DATA.devicesData); },
-                getPredictionDistribution: function() { return $q.resolve(MOCK_DATA.predictionDistribution); },
-                getRecordsData: function() { return $q.resolve(MOCK_DATA.recordsData); },
-                getRecordsTimelineData: function() {
-                    // Generate records timeline from actual records data by event
-                    var records = MOCK_DATA.records.slice().sort(function(a, b) {
-                        return new Date(a.processed_at) - new Date(b.processed_at);
-                    });
-                    var data = records.map(function(r) {
-                        return { event: r.event_id, score: r.anomaly_score, prediction: r.prediction };
-                    });
-                    return $q.resolve(data);
-                },
-                getRecordsByDeviceType: function() {
-                    var counts = {};
-                    MOCK_DATA.records.forEach(function(r) {
-                        counts[r.asset_type] = (counts[r.asset_type] || 0) + 1;
-                    });
-                    return $q.resolve(counts);
-                },
-                getResponseActionsData: function() {
-                    var counts = { 'None': 0, 'Alert Sent': 0, 'Device Isolated': 0 };
-                    MOCK_DATA.records.forEach(function(r) {
-                        if (counts.hasOwnProperty(r.response_action)) {
-                            counts[r.response_action]++;
-                        }
-                    });
-                    return $q.resolve(counts);
-                },
-                getAnomalyScoreByFarm: function() {
-                    var farmData = {};
-                    MOCK_DATA.records.forEach(function(r) {
-                        if (!farmData[r.farm_name]) {
-                            farmData[r.farm_name] = { total: 0, count: 0 };
-                        }
-                        farmData[r.farm_name].total += r.anomaly_score;
-                        farmData[r.farm_name].count++;
-                    });
-                    var result = [];
-                    for (var farm in farmData) {
-                        result.push({ farm: farm, avgScore: farmData[farm].total / farmData[farm].count });
-                    }
-                    return $q.resolve(result);
-                },
-                getMapEvents: function() {
-                    var events = MOCK_DATA.records.map(function(r) {
-                        return {
-                            id: r.event_id,
-                            latitude: r.latitude,
-                            longitude: r.longitude,
-                            prediction: r.prediction,
-                            anomaly_score: r.anomaly_score,
-                            asset_type: r.asset_type,
-                            farm_name: r.farm_name
-                        };
-                    });
-                    return $q.resolve(events);
-                }
-            };
-        }]);
+.factory('DataService', ['$http', '$q', function($http, $q) {
 
-    // ============================================
-    // AUTH SERVICE
-    // ============================================
-    
-    angular.module('cropGuardApp')
-        .factory('AuthService', ['$window', '$q', function($window, $q) {
-            var currentUser = null;
-            var isLoggedIn = false;
+    const BASE_URL = 'http://127.0.0.1:8000';
+    const USER_ID = 'FARMER_001'; // hardcoded for now (matches your backend)
 
-            var storedUser = $window.localStorage.getItem('cropGuardUser');
-            if (storedUser) {
-                try {
-                    currentUser = JSON.parse(storedUser);
-                    isLoggedIn = true;
-                } catch (e) {
-                    $window.localStorage.removeItem('cropGuardUser');
-                }
-            }
+    function mapFarm(f) {
+        return {
+            id: f.farm_id,
+            name: f.farm_name,
+            area: f.area_in_acres,
+            latitude: f.location_lat,
+            longitude: f.location_long,
+            is_active: f.is_active,
+            created_at: new Date()
+        };
+    }
 
-            return {
-                login: function(email, password) {
-                    if (email === 'nidhipatel2005@gmail.com' && password === 'nidhi12345') {
-                        currentUser = MOCK_DATA.user;
-                        isLoggedIn = true;
-                        $window.localStorage.setItem('cropGuardUser', JSON.stringify(currentUser));
-                        return $q.resolve({ success: true, user: currentUser });
-                    }
-                    return $q.reject({ message: 'Invalid email or password' });
-                },
-                logout: function() {
-                    currentUser = null;
-                    isLoggedIn = false;
-                    $window.localStorage.removeItem('cropGuardUser');
-                },
-                isAuthenticated: function() { return isLoggedIn; },
-                getCurrentUser: function() { return currentUser; }
-            };
-        }]);
+    function mapDevice(a) {
+        return {
+            id: a.asset_id,
+            name: a.asset_name,
+            type: normalizeType(a.asset_type),
+            farm_id: a.farm_id,
+            farm_name: a.farm_id, // UI expects string, OK for now
+            os: a.asset_os,
+            is_active: a.is_active,
+            baseline_lat: a.baseline_lat,
+            baseline_long: a.baseline_long,
+            last_seen: new Date(),
+            created_at: new Date(),
+            owner_user_id: a.owner_user_id
+        };
+    }
+
+    function normalizeType(type) {
+        switch (type) {
+            case 'soil_sensor': return 'Soil Sensor';
+            case 'weather_station': return 'Weather Station';
+            case 'irrigation_controller': return 'Controller';
+            case 'gateway': return 'Gateway';
+            default: return type;
+        }
+    }
+
+    return {
+
+        // ================= FARMS =================
+        getFarms: function () {
+            return $http.post(`${BASE_URL}/farms/by-user/`, {
+                user_id: USER_ID
+            }).then(res => res.data.farms.map(mapFarm));
+        },
+
+        getFarm: function (id) {
+            return this.getFarms().then(farms =>
+                farms.find(f => f.id == id)
+            );
+        },
+
+        // ================= DEVICES =================
+        getDevices: function () {
+            return $http.post(`${BASE_URL}/assets/by-user/`, {
+                user_id: USER_ID
+            }).then(res => res.data.assets.map(mapDevice));
+        },
+
+        getDevice: function (id) {
+            return this.getDevices().then(devices =>
+                devices.find(d => d.id == id)
+            );
+        },
+
+        getDevicesByFarm: function (farmId) {
+            return $http.post(`${BASE_URL}/assets/by-user-farm/`, {
+                user_id: USER_ID,
+                farm_id: farmId
+            }).then(res => res.data.assets.map(mapDevice));
+        },
+
+        // ================= RECORDS =================
+        // backend not ready → keep mock-compatible empty
+        getRecords: function () {
+            return $q.resolve([]);
+        },
+
+        // ================= ANALYTICS HELPERS =================
+        getDevicesData: () => $q.resolve([]),
+        getPredictionDistribution: () => $q.resolve({ normal: 0, suspicious: 0, anomaly: 0 }),
+        getRecordsData: () => $q.resolve([]),
+        getRecordsTimelineData: () => $q.resolve([]),
+        getRecordsByDeviceType: () => $q.resolve({}),
+        getResponseActionsData: () => $q.resolve({}),
+        getAnomalyScoreByFarm: () => $q.resolve([]),
+
+        // ================= MAP =================
+        getMapEvents: function () {
+            return this.getDevices().then(devices =>
+                devices.map(d => ({
+                    id: d.id,
+                    latitude: d.baseline_lat,
+                    longitude: d.baseline_long,
+                    prediction: d.is_active ? 'Normal' : 'Anomaly',
+                    farm_name: d.farm_name
+                }))
+            );
+        }
+    };
+}]);
 
     // ============================================
     // MAIN CONTROLLER
@@ -451,7 +480,6 @@
 
             vm.login = function() {
                 vm.error = '';
-                if (!vm.email || !vm.password) { vm.error = 'Please enter both email and password'; return; }
                 vm.isLoading = true;
 
                 // Collect all required data for API payload
@@ -467,8 +495,7 @@
                         
                         // Create payload
                         var payload = {
-                            userID: vm.email,
-                            password: vm.password,
+                            userID: 'FARMER_001',
                             timestamp: timestamp,
                             ipAddress: ipAddress,
                             longitude: geoLocation.longitude,
@@ -484,12 +511,12 @@
                         //     .then(function(response) {
                         //         console.log('API Response:', response.data);
                         //         // Continue with authentication after API call
-                        //         return AuthService.login(vm.email, vm.password);
+                        //         return AuthService.login();
                         //     })
                         //     .catch(function(error) {
                         //         console.error('API Error:', error);
                         //         // Even if API fails, continue with local authentication
-                        //         return AuthService.login(vm.email, vm.password);
+                        //         return AuthService.login();
                         //     })
                         //     .then(function() { 
                         //         $location.path('/dashboard/home'); 
@@ -502,7 +529,7 @@
                         //     });
                         
                         // Continue with authentication (without API call for now)
-                        AuthService.login(vm.email, vm.password)
+                        AuthService.login()
                             .then(function() { 
                                 $location.path('/dashboard/home'); 
                             })
@@ -516,7 +543,7 @@
                     .catch(function(error) {
                         console.error('Error collecting login data:', error);
                         // If data collection fails, still try to authenticate
-                        AuthService.login(vm.email, vm.password)
+                        AuthService.login()
                             .then(function() { $location.path('/dashboard/home'); })
                             .catch(function(err) { vm.error = err.message || 'Invalid credentials'; })
                             .finally(function() { vm.isLoading = false; });
