@@ -66,23 +66,23 @@ class SecurityEvent(models.Model):
     geo_lat = models.FloatField()
     geo_long = models.FloatField()
 
-    geo_distance_from_baseline_km = models.FloatField(null=True, blank=True)
+    geo_distance_from_baseline_km = models.FloatField(null=True, blank=True, default=0)
 
     # --- Farm Location (Asset baseline) ---
-    farm_id = models.CharField(max_length=20, null=True)
-    farm_lat = models.FloatField(null=True, blank=True)
-    farm_long = models.FloatField(null=True, blank=True)
+    farm_id = models.CharField(max_length=20, null=True,default=0)
+    farm_lat = models.FloatField(null=True, blank=True,default=0)
+    farm_long = models.FloatField(null=True, blank=True,default=0)
 
     # --- Agri Telemetry (Optional per event) ---
-    soil_moisture_percent = models.FloatField(null=True, blank=True)
-    soil_temperature = models.FloatField(null=True, blank=True)
-    soil_humidity = models.FloatField(null=True, blank=True)
+    soil_moisture_percent = models.FloatField(null=True, blank=True,default=0)
+    soil_temperature = models.FloatField(null=True, blank=True,default=0)
+    soil_humidity = models.FloatField(null=True, blank=True,default=0)
 
-    irrigation_water_volume_ltrs = models.FloatField(null=True, blank=True)
-    water_consistency_score = models.FloatField(null=True, blank=True)
+    irrigation_water_volume_ltrs = models.FloatField(null=True, blank=True,default=0)
+    water_consistency_score = models.FloatField(null=True, blank=True,default=0)
 
-    sensor_reading_variance = models.FloatField(null=True, blank=True)
-    sensor_signal_strength = models.FloatField(null=True, blank=True)
+    sensor_reading_variance = models.FloatField(null=True, blank=True,default=0)
+    sensor_signal_strength = models.FloatField(null=True, blank=True,default=0)
 
     # --- Config & ML ---
     config_change_flag = models.BooleanField(default=False)

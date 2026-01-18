@@ -1,69 +1,47 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserCreateSerializer
+from django.utils.dateparse import parse_datetime
+
 from .models import User
-
-@api_view(['POST'])
-def create_user(request):
-    serializer = UserCreateSerializer(data=request.data)
-
-    if serializer.is_valid():
-        user = serializer.save()
-        return Response(
-            {
-                "message": "User created successfully",
-                "user_id": str(user.user_id)
-            },
-            status=status.HTTP_201_CREATED
-        )
-
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
+from event_payload.serializers import SecurityEventCreateSerializer
+from ml_response.ml_client import send_event_to_ml
 
 @api_view(['POST'])
 def login_validate(request):
-    """
-    Simple login validation
-    Input: user_id, password
-    Output: auth_status
-    """
-
     user_id = request.data.get("user_id")
     password = request.data.get("password")
 
     if not user_id or not password:
-        return Response(
-            {
-                "auth_status": "failure",
-                "message": "user_id and password required"
-            },
-            status=status.HTTP_400_BAD_REQUEST
-        )
+        return Response({"auth_status": "failure"}, status=400)
 
     try:
         user = User.objects.get(user_id=user_id, is_active=True)
     except User.DoesNotExist:
-        return Response(
-            {
-                "auth_status": "failure"
-            },
-            status=status.HTTP_401_UNAUTHORIZED
-        )
+        auth_status = "failure"
+    else:
+        auth_status = "success" if password == user.password else "failure"
 
-    if (password == user.password):
-        return Response(
-            {
-                "auth_status": "success"
-            },
-            status=status.HTTP_200_OK
-        )
+    # ---- CREATE EVENT ----
+    event = SecurityEvent.objects.create(
+        timestamp=timezone.now(),
+        asset_type="gateway",
+        device_id=request.data.get("device_id"),
+        device_type="mobile_app",
+        device_os=request.data.get("device_os", "unknown"),
 
-    return Response(
-        {
-            "auth_status": "failure"
-        },
-        status=status.HTTP_401_UNAUTHORIZED
+        action_type="login",
+        resource_type="auth_session",
+        auth_status=auth_status,
+
+        ip_address=request.data.get("ip_address"),
+        geo_lat=request.data.get("geo_lat", 0),
+        geo_long=request.data.get("geo_long", 0),
+
+        owner_user_id=user_id
     )
 
+    # ---- SEND TO ML ----
+    send_event_to_ml(event.__dict__)
+
+    return Response({"auth_status": auth_status})
